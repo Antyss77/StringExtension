@@ -8,7 +8,7 @@ public class Tests {
     public void Setup() {
     }
 
-    public class StringUtilitiesTests {
+    public class StringsUtilitiesTests {
         [Test]
         public void TestRemoveCharacters() {
             string input = "hello world!";

@@ -3,7 +3,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Strings {
-    public static class StringUtilities {
+    public static class Strings {
         // Removes specified characters from the given string
         public static string RemoveCharacters(this string input, char[] charactersToRemove) {
             return new string(input.Where(c => !charactersToRemove.Contains(c)).ToArray());
