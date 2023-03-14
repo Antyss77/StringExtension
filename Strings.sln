@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strings", "Strings.csproj", "{04484D2E-5F54-4C04-AAFA-68F9209E6C2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringUtilitiesTest", "StringUtilitiesTest\StringUtilitiesTest.csproj", "{C15B40F6-06A7-4BAD-9E24-6017D8606601}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{04484D2E-5F54-4C04-AAFA-68F9209E6C2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04484D2E-5F54-4C04-AAFA-68F9209E6C2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04484D2E-5F54-4C04-AAFA-68F9209E6C2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C15B40F6-06A7-4BAD-9E24-6017D8606601}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C15B40F6-06A7-4BAD-9E24-6017D8606601}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C15B40F6-06A7-4BAD-9E24-6017D8606601}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C15B40F6-06A7-4BAD-9E24-6017D8606601}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
