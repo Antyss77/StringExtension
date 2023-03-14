@@ -3,6 +3,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Strings {
+    
+    // Commit Test
+    
     public static class StringUtilities {
         // Removes specified characters from the given string
         public static string RemoveCharacters(this string input, char[] charactersToRemove) {
