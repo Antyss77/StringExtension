@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -15,7 +14,7 @@ namespace Strings {
             return input.Replace(oldValue, newValue);
         }
 
-        // Converts input string to title case
+        // Converts input string to TitleCase
         public static string ToTitleCase(string input) {
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input);
         }
