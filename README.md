@@ -22,7 +22,7 @@ A C# library that provides utility methods for manipulating strings.
 - ConvertToCamelCase - converts a given string to camel case.
 
 ## Running Tests
-The tests are being prepared - available soon
+The unit tests are now functional and available [here](https://github.com/Antyss77/Strings/blob/master/StringUtilitiesTest/StringUtilitiesTest.cs)
 
 ## Contributing
 You can contribute to the project in several ways: by proposing new ideas, reporting bugs you encounter, or improving existing code. If you would like to submit a change, you can open a Pull Request so that we can review your changes and incorporate them into the project if necessary. We welcome your participation and look forward to moving this string library project forward.
