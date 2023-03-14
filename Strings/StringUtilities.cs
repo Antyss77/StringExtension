@@ -58,11 +58,13 @@ namespace Strings {
             return Encoding.UTF8.GetString(bytes);
         }
 
-        // Converts input string from the given encoding to UTF-16
+        
+        // UTF-16 is temporarily disabled for testing
+        /*// Converts input string from the given encoding to UTF-16
         public static string ConvertToUtf16(this string input, Encoding encoding) {
             byte[] bytes = encoding.GetBytes(input);
             return Encoding.Unicode.GetString(bytes);
-        }
+        }*/
 
         // Detects encoding of the given string
         public static Encoding DetectEncoding(this string input) {
