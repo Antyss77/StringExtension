@@ -20,7 +20,7 @@ namespace Strings {
         }
 
         // Validates email address
-        public static bool IsValidEmail(string email) {
+        public static bool IsValidEmail(this string email) {
             if (string.IsNullOrEmpty(email))
             {
                 return false;
@@ -39,7 +39,7 @@ namespace Strings {
         }
 
         // Validates phone number
-        public static bool IsValidPhoneNumber(string phoneNumber) {
+        public static bool IsValidPhoneNumber(this string phoneNumber) {
             if (string.IsNullOrEmpty(phoneNumber))
             {
                 return false;
