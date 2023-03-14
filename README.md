@@ -21,6 +21,9 @@ A C# library that provides utility methods for manipulating strings.
 - RemoveDuplicateCharacters - remove duplicate characters from a given string.
 - ConvertToCamelCase - converts a given string to camel case.
 
+## Running Tests
+The tests are being prepared - available soon
+
 ## Contributing
 You can contribute to the project in several ways: by proposing new ideas, reporting bugs you encounter, or improving existing code. If you would like to submit a change, you can open a Pull Request so that we can review your changes and incorporate them into the project if necessary. We welcome your participation and look forward to moving this string library project forward.
 
