@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "r34CJTlWpVFPuPpTGhkQyMdxaLzrz+qp72vKbbtX+mpsJfkvd78OvRCOOp4NlJjel+8aPfF08VXlhImMLUTtaw==",
+  "dgSpecHash": "KUIy7JStnxmeWUw+UlZ82cb2E+bBaHieKt3btTV6jezdG54errhFR5UPHHsgecdg+YC4HT+1ZSQ3NVqP7Uzj1A==",
   "success": true,
   "projectFilePath": "C:\\Users\\leant\\Desktop\\Strings\\StringsTests\\StringsTests.csproj",
   "expectedPackageFiles": [
@@ -16,8 +16,8 @@
     "C:\\Users\\leant\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
     "C:\\Users\\leant\\.nuget\\packages\\nuget.frameworks\\5.11.0\\nuget.frameworks.5.11.0.nupkg.sha512",
     "C:\\Users\\leant\\.nuget\\packages\\nunit\\3.13.3\\nunit.3.13.3.nupkg.sha512",
-    "C:\\Users\\leant\\.nuget\\packages\\nunit.analyzers\\3.3.0\\nunit.analyzers.3.3.0.nupkg.sha512",
-    "C:\\Users\\leant\\.nuget\\packages\\nunit3testadapter\\4.2.1\\nunit3testadapter.4.2.1.nupkg.sha512",
+    "C:\\Users\\leant\\.nuget\\packages\\nunit.analyzers\\3.6.1\\nunit.analyzers.3.6.1.nupkg.sha512",
+    "C:\\Users\\leant\\.nuget\\packages\\nunit3testadapter\\4.4.2\\nunit3testadapter.4.4.2.nupkg.sha512",
     "C:\\Users\\leant\\.nuget\\packages\\system.collections\\4.0.11\\system.collections.4.0.11.nupkg.sha512",
     "C:\\Users\\leant\\.nuget\\packages\\system.diagnostics.debug\\4.0.11\\system.diagnostics.debug.4.0.11.nupkg.sha512",
     "C:\\Users\\leant\\.nuget\\packages\\system.diagnostics.tools\\4.0.1\\system.diagnostics.tools.4.0.1.nupkg.sha512",

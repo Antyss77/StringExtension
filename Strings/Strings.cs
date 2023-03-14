@@ -3,9 +3,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Strings {
-    
-    // Commit Test
-    
     public static class StringUtilities {
         // Removes specified characters from the given string
         public static string RemoveCharacters(this string input, char[] charactersToRemove) {
@@ -61,7 +58,7 @@ namespace Strings {
             return Encoding.UTF8.GetString(bytes);
         }
 
-        
+
         // UTF-16 is temporarily disabled for testing
         /*// Converts input string from the given encoding to UTF-16
         public static string ConvertToUtf16(this string input, Encoding encoding) {
