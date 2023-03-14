@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strings", "Strings\Strings.csproj", "{CFDDF1CD-99A1-4FAD-B085-589A15BD616E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringsTests", "StringsTests\StringsTests.csproj", "{654B561D-5AFF-43ED-AFEE-CC71D08D9DC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFDDF1CD-99A1-4FAD-B085-589A15BD616E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFDDF1CD-99A1-4FAD-B085-589A15BD616E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFDDF1CD-99A1-4FAD-B085-589A15BD616E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFDDF1CD-99A1-4FAD-B085-589A15BD616E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{654B561D-5AFF-43ED-AFEE-CC71D08D9DC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{654B561D-5AFF-43ED-AFEE-CC71D08D9DC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{654B561D-5AFF-43ED-AFEE-CC71D08D9DC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{654B561D-5AFF-43ED-AFEE-CC71D08D9DC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
