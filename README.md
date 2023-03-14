@@ -3,7 +3,6 @@
 
 A C# library that provides utility methods for manipulating strings.
 
-
 ## Features
 
 - RemoveCharacters - removes the specified characters from a string
@@ -20,7 +19,6 @@ A C# library that provides utility methods for manipulating strings.
 - CountLetters - counts the number of letters in a given string.
 - RemoveDuplicateCharacters - remove duplicate characters from a given string.
 - ConvertToCamelCase - converts a given string to camel case.
-
 
 ## Running Tests
 The unit tests are now functional and available [here](https://github.com/Antyss77/Strings/blob/master/StringsTests/StringsTests.cs)
