@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strings", "Strings.csproj", "{04484D2E-5F54-4C04-AAFA-68F9209E6C2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringsUtilitiesTests", "..\StringsUtilitiesTests\StringsUtilitiesTests.csproj", "{85A1843E-113B-476D-90C4-AC0BFE82AA51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringsTests", "..\StringsTests\StringsTests.csproj", "{85A1843E-113B-476D-90C4-AC0BFE82AA51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
