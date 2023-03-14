@@ -5,19 +5,22 @@ using System.Text.RegularExpressions;
 
 namespace Strings {
     public static class StringUtilities {
+        // Removes specified characters from the given string
         public static string RemoveCharacters(string input, char[] charactersToRemove) {
             return new string(input.Where(c => !charactersToRemove.Contains(c)).ToArray());
         }
 
+        // Replaces specified substring with a new substring
         public static string ReplaceSubstring(string input, string oldValue, string newValue) {
             return input.Replace(oldValue, newValue);
         }
 
+        // Converts input string to title case
         public static string ToTitleCase(string input) {
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input);
         }
 
-        // Vérifie si l'adresse email est valide
+        // Validates email address
         public static bool IsValidEmail(string email) {
             if (string.IsNullOrEmpty(email))
             {
@@ -26,7 +29,7 @@ namespace Strings {
 
             try
             {
-                // Utilisation de la classe MailAddress pour valider l'adresse e-mail
+                // Use MailAddress class to validate email address
                 var address = new System.Net.Mail.MailAddress(email);
                 return address.Address == email;
             }
@@ -36,32 +39,32 @@ namespace Strings {
             }
         }
 
-        // Vérifie si le numéro de téléphone est valide
+        // Validates phone number
         public static bool IsValidPhoneNumber(string phoneNumber) {
             if (string.IsNullOrEmpty(phoneNumber))
             {
                 return false;
             }
 
-            // Expression régulière pour valider le format du numéro de téléphone
+            // Regular expression to validate phone number format
             var regex = new Regex(@"^\+\d{1,3}\s\d{1,14}$");
 
             return regex.IsMatch(phoneNumber);
         }
 
-        // Convertit une chaîne de caractères de l'encodage donné en UTF-8
+        // Converts input string from the given encoding to UTF-8
         public static string ConvertToUtf8(string input, Encoding encoding) {
             byte[] bytes = encoding.GetBytes(input);
             return Encoding.UTF8.GetString(bytes);
         }
 
-        // Convertit une chaîne de caractères de l'encodage donné en UTF-16
+        // Converts input string from the given encoding to UTF-16
         public static string ConvertToUtf16(string input, Encoding encoding) {
             byte[] bytes = encoding.GetBytes(input);
             return Encoding.Unicode.GetString(bytes);
         }
 
-        // Détecte l'encodage de la chaîne de caractères donnée
+        // Detects encoding of the given string
         public static Encoding DetectEncoding(string input) {
             byte[] bytes = Encoding.Default.GetBytes(input);
 
@@ -84,4 +87,3 @@ namespace Strings {
         }
     }
 }
-
