@@ -5,17 +5,17 @@ using System.Text.RegularExpressions;
 namespace Strings {
     public static class StringUtilities {
         // Removes specified characters from the given string
-        public static string RemoveCharacters(string input, char[] charactersToRemove) {
+        public static string RemoveCharacters(this string input, char[] charactersToRemove) {
             return new string(input.Where(c => !charactersToRemove.Contains(c)).ToArray());
         }
 
         // Replaces specified substring with a new substring
-        public static string ReplaceSubstring(string input, string oldValue, string newValue) {
+        public static string ReplaceSubstring(this string input, string oldValue, string newValue) {
             return input.Replace(oldValue, newValue);
         }
 
         // Converts input string to TitleCase
-        public static string ToTitleCase(string input) {
+        public static string ToTitleCase(this string input) {
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input);
         }
 
@@ -46,25 +46,26 @@ namespace Strings {
             }
 
             // Regular expression to validate phone number format
-            var regex = new Regex(@"^\+\d{1,3}\s\d{1,14}$");
+            var regex = new Regex(@"^(\+?\d{1,3}[\s-]?)?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}$");
 
             return regex.IsMatch(phoneNumber);
         }
 
+
         // Converts input string from the given encoding to UTF-8
-        public static string ConvertToUtf8(string input, Encoding encoding) {
+        public static string ConvertToUtf8(this string input, Encoding encoding) {
             byte[] bytes = encoding.GetBytes(input);
             return Encoding.UTF8.GetString(bytes);
         }
 
         // Converts input string from the given encoding to UTF-16
-        public static string ConvertToUtf16(string input, Encoding encoding) {
+        public static string ConvertToUtf16(this string input, Encoding encoding) {
             byte[] bytes = encoding.GetBytes(input);
             return Encoding.Unicode.GetString(bytes);
         }
 
         // Detects encoding of the given string
-        public static Encoding DetectEncoding(string input) {
+        public static Encoding DetectEncoding(this string input) {
             byte[] bytes = Encoding.Default.GetBytes(input);
 
             if (bytes.Length >= 2 && bytes[0] == 0xff && bytes[1] == 0xfe)
@@ -86,7 +87,7 @@ namespace Strings {
         }
 
         // Counts the number of occurrences of a substring in the given string
-        public static int CountSubstring(string input, string substring) {
+        public static int CountSubstring(this string input, string substring) {
             if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(substring))
             {
                 return 0;
@@ -96,7 +97,7 @@ namespace Strings {
         }
 
         // Reverses the order of words in the given string
-        public static string ReverseWords(string input) {
+        public static string ReverseWords(this string input) {
             if (string.IsNullOrEmpty(input))
             {
                 return input;
@@ -108,7 +109,7 @@ namespace Strings {
         }
 
         // Determines if the given string is a palindrome
-        public static bool IsPalindrome(string input) {
+        public static bool IsPalindrome(this string input) {
             // Remove all non-letter characters and convert to lowercase
             string cleanString = new string(input.Where(char.IsLetter).Select(char.ToLower).ToArray());
 
@@ -117,13 +118,13 @@ namespace Strings {
         }
 
         // Counts the number of letters in the given string
-        public static int CountLetters(string input) {
+        public static int CountLetters(this string input) {
             // Remove all non-letter characters and count the length of the resulting string
             return input.Count(char.IsLetter);
         }
 
         // Removes duplicate characters from the given string
-        public static string RemoveDuplicateCharacters(string input) {
+        public static string RemoveDuplicateCharacters(this string input) {
             if (string.IsNullOrEmpty(input))
             {
                 return input;
@@ -137,7 +138,7 @@ namespace Strings {
         }
 
         // Converts input string to camel case
-        public static string ConvertToCamelCase(string input) {
+        public static string ConvertToCamelCase(this string input) {
             if (string.IsNullOrEmpty(input))
             {
                 return input;
