@@ -85,5 +85,28 @@ namespace Strings {
 
             return Encoding.Default;
         }
+
+        // Counts the number of occurrences of a substring in the given string
+        public static int CountSubstring(string input, string substring) {
+            if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(substring))
+            {
+                return 0;
+            }
+
+            return (input.Length - input.Replace(substring, "").Length) / substring.Length;
+        }
+
+        // Reverses the order of words in the given string
+        public static string ReverseWords(string input) {
+            if (string.IsNullOrEmpty(input))
+            {
+                return input;
+            }
+
+            var words = input.Split(' ').Where(w => !string.IsNullOrEmpty(w)).ToArray();
+            Array.Reverse(words);
+            return string.Join(" ", words);
+        }
     }
 }
+
