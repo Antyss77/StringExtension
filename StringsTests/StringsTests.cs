@@ -1,14 +1,14 @@
 using System.Text;
 using Strings;
 
-namespace StringUtilitiesTests;
+namespace StringsTests;
 
 public class Tests {
     [SetUp]
     public void Setup() {
     }
 
-    public class StringUtilitiesTests {
+    public class StringsTests {
         [Test]
         public void TestRemoveCharacters() {
             string input = "hello world!";
