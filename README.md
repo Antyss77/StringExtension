@@ -1,4 +1,3 @@
-
 # Strings
 
 A C# library that provides utility methods for manipulating strings.
