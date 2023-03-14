@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Strings.csproj" />
+      <ProjectReference Include="..\Strings\Strings.csproj" />
     </ItemGroup>
 
 </Project>
