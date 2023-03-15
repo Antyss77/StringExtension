@@ -17,7 +17,9 @@ A C# library that provides utility methods for manipulating strings.
 - ConvertToCamelCase - converts a given string to camel case.
 
 ## Running Tests
-The unit tests are now functional and available [here](https://github.com/Antyss77/Strings/blob/master/StringsTests/StringsTests.cs)
+ - The unit tests are  [here](https://github.com/Antyss77/Strings/blob/master/StringsTests/StringsTests.cs)  
+- The performance tests are [here](https://github.com/Antyss77/Strings/blob/master/StringsTests/StringsPerf.cs)
+
 
 ## Licence 
 Distributed under the MIT License. See [LICENCE](https://github.com/Antyss77/Strings/blob/master/LICENSE) for more information.
