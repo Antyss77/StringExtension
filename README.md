@@ -8,8 +8,6 @@ A C# library that provides utility methods for manipulating strings.
 - ToTitleCase - converts an upper and lower case string to upper case
 - IsValidEmail - validate an e-mail address
 - IsValidPhoneNumber - validate a phone number
-- ConvertToUtf8 - converts a string from the specified encoding to UTF-8
-- ConvertToUtf16 - converts a string from the specified encoding to UTF-16
 - DetectEncoding - detects the encoding of the specified string
 - CountSubstring - counts the number of occurrences of a string in the specified string
 - ReverseWords - reverses the order of words in the specified string
