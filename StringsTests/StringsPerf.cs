@@ -7,7 +7,8 @@ using BenchmarkDotNet.Running;
 using Strings;
 using StringsPerf;
 
-BenchmarkRunner.Run<StringsBenchmark>(ManualConfig.Create(DefaultConfig.Instance.With(ConfigOptions.DisableOptimizationsValidator)));
+BenchmarkRunner.Run<StringsBenchmark>(ManualConfig.Create(DefaultConfig.Instance.WithOptions(ConfigOptions.DisableOptimizationsValidator)));
+
 
 namespace StringsPerf {
     [MemoryDiagnoser(false)]
