@@ -51,24 +51,6 @@ public class Tests {
         }
 
         [Test]
-        public void TestConvertToUtf8() {
-            string input = "hello world!";
-            Encoding encoding = Encoding.Default;
-            string expected = "hello world!";
-            string result = input.ConvertToUtf8(encoding);
-            Assert.AreEqual(expected, result);
-        }
-
-        /*[Test]
-        public void TestConvertToUtf16() {
-            string input = "hello world!";
-            Encoding encoding = Encoding.Default;
-            string expected = "hello world!";
-            string result = input.ConvertToUtf16(encoding);
-            Assert.AreEqual(expected, result);
-        }*/
-
-        [Test]
         public void TestDetectEncoding() {
             string input = "hello world!";
             Encoding expected = Encoding.Default;

@@ -51,21 +51,6 @@ namespace Strings {
             return regex.IsMatch(phoneNumber);
         }
 
-
-        // Converts input string from the given encoding to UTF-8
-        public static string ConvertToUtf8(this string input, Encoding encoding) {
-            byte[] bytes = encoding.GetBytes(input);
-            return Encoding.UTF8.GetString(bytes);
-        }
-
-
-        // UTF-16 is temporarily disabled for testing
-        /*// Converts input string from the given encoding to UTF-16
-        public static string ConvertToUtf16(this string input, Encoding encoding) {
-            byte[] bytes = encoding.GetBytes(input);
-            return Encoding.Unicode.GetString(bytes);
-        }*/
-
         // Detects encoding of the given string
         public static Encoding DetectEncoding(this string input) {
             byte[] bytes = Encoding.Default.GetBytes(input);
