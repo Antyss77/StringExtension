@@ -1,5 +1,4 @@
-# Strings ![Downloads](https://img.shields.io/github/downloads/Antyss77/Strings/total)
-
+# Strings 
 A C# library that provides utility methods for manipulating strings.
 
 ## Features
