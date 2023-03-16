@@ -96,21 +96,21 @@ namespace Strings {
         }
 
         public static bool IsPalindrome(this ReadOnlySpan<char> input) {
-        	if (input.Length <= 1) return true;
+            if (input.Length <= 1) return true;
         	
-    		int e = input.Length;
-   		    for (int s = 0; s < input.Length; s++) {
-   		        e--;
+            int e = input.Length;
+            for (int s = 0; s < input.Length; s++) {
+                e--;
 
-   		        // Skip non-letter characters
-   		        while (s < input.Length && !char.IsLetter(input[s])) s++;
+                // Skip non-letter characters
+                while (s < input.Length && !char.IsLetter(input[s])) s++;
                 while (e >= 0 && !char.IsLetter(input[e])) e--;
                 if (s >= input.Length || e < 0) break;
 
                 if (input[s] != input[e]) return false;
-   		    }
+           }
    		    
-   		    return true;
+           return true;
         }
 
         public static bool IsPalindrome(this string input) {
