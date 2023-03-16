@@ -95,13 +95,29 @@ namespace Strings {
             return string.Join(" ", words);
         }
 
-        // Determines if the given string is a palindrome
-        public static bool IsPalindrome(this string input) {
-            // Remove all non-letter characters and convert to lowercase
-            string cleanString = new string(input.Where(char.IsLetter).Select(char.ToLower).ToArray());
+        static bool IsPalindrome(this ReadOnlySpan<char> input)
+        {
+        	if (input.Length <= 1) return true;
+        	
+    		int e = input.Length;
+   		    for (int s = 0; s < input.Length; s++)
+   		    {
+   		        e--;
 
-            // Check if the string is equal to its reverse
-            return cleanString == new string(cleanString.Reverse().ToArray());
+   		        // Skip non-letter characters
+   		        while (s < input.Length && !char.IsLetter(input[s])) s++;
+                while (e >= 0 && !char.IsLetter(input[e])) e--;
+                if (s >= input.Length || e < 0) break;
+
+                if (input[s] != input[e]) return false;
+   		    }
+   		    
+   		    return true;
+        }
+
+        public static bool IsPalindrome(this string input)
+        {
+        	return IsPalindrome(input.AsSpan());
         }
 
         // Counts the number of letters in the given string
