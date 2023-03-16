@@ -117,14 +117,6 @@ namespace Strings {
         	return IsPalindrome(input.AsSpan());
         }
 
-        public static bool IsPalindromeClassic(this string input) {
-            // Remove all non-letter characters and convert to lowercase
-            string cleanString = new string(input.Where(char.IsLetter).Select(char.ToLower).ToArray());
-
-            // Check if the string is equal to its reverse
-            return cleanString == new string(cleanString.Reverse().ToArray());
-        }
-
         // Counts the number of letters in the given string
         public static int CountLetters(this string input) {
             // Remove all non-letter characters and count the length of the resulting string
