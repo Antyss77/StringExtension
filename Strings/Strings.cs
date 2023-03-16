@@ -103,6 +103,7 @@ namespace Strings {
             // Check if the string is equal to its reverse
             return cleanString == new string(cleanString.Reverse().ToArray());
         }
+        
 
         // Counts the number of letters in the given string
         public static int CountLetters(this string input) {
