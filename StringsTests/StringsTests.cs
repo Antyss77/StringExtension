@@ -16,7 +16,6 @@ public class Tests {
             string expected = "he wrd!";
             string result = input.RemoveCharacters(charactersToRemove);
             Assert.That(result, Is.EqualTo(expected));
-            
         }
 
         [Test]

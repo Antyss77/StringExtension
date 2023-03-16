@@ -7,7 +7,8 @@ using BenchmarkDotNet.Running;
 using Strings;
 using StringsPerf;
 
-BenchmarkRunner.Run<StringsBenchmark>(ManualConfig.Create(DefaultConfig.Instance.WithOptions(ConfigOptions.DisableOptimizationsValidator)));
+BenchmarkRunner.Run<StringsBenchmark>(
+    ManualConfig.Create(DefaultConfig.Instance.WithOptions(ConfigOptions.DisableOptimizationsValidator)));
 
 
 namespace StringsPerf {
@@ -38,12 +39,6 @@ namespace StringsPerf {
         public bool IsValidEmail() {
             string email = "john.doe@example.com";
             return email.IsValidEmail();
-        }
-
-        [Benchmark]
-        public bool IsValidPhoneNumber() {
-            string phoneNumber = "555-555-5555";
-            return phoneNumber.IsValidPhoneNumber();
         }
 
         [Benchmark]
@@ -83,5 +78,4 @@ namespace StringsPerf {
             return input.ConvertToCamelCase();
         }
     }
-
 }
