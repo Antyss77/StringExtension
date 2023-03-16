@@ -24,4 +24,4 @@ jobs:
       - name: Test
         run: dotnet test --no-build --verbosity normal
       - name: Benchmark
-        run: dotnet run -c Release --project StringsPerf/StringsPerf.csproj
+        run: dotnet run -c Release --project StringsTests/StringsTests.csproj
