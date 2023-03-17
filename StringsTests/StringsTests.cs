@@ -9,30 +9,13 @@ public class Tests {
     }
 
     public class StringsTests {
+        
         [Test]
         public void TestRemoveCharacters() {
             string input = "hello world!";
             char[] charactersToRemove = {'l', 'o'};
             string expected = "he wrd!";
             string result = input.RemoveCharacters(charactersToRemove);
-            Assert.That(result, Is.EqualTo(expected));
-        }
-
-        [Test]
-        public void TestReplaceSubstring() {
-            string input = "hello world!";
-            string oldValue = "world";
-            string newValue = "everyone";
-            string expected = "hello everyone!";
-            string result = input.ReplaceSubstring(oldValue, newValue);
-            Assert.That(result, Is.EqualTo(expected));
-        }
-
-        [Test]
-        public void TestToTitleCase() {
-            string input = "hello world!";
-            string expected = "Hello World!";
-            string result = input.ToTitleCase();
             Assert.That(result, Is.EqualTo(expected));
         }
 
@@ -48,14 +31,6 @@ public class Tests {
             string phoneNumber = "555-555-5555";
             bool result = phoneNumber.IsValidPhoneNumber();
             Assert.IsTrue(result);
-        }
-
-        [Test]
-        public void TestDetectEncoding() {
-            string input = "hello world!";
-            Encoding expected = Encoding.Default;
-            Encoding result = input.DetectEncoding();
-            Assert.That(result, Is.EqualTo(expected));
         }
 
         [Test]

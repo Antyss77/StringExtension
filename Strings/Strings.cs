@@ -1,24 +1,14 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
+using PhoneNumbers;
+
 
 namespace Strings {
     public static class Strings {
         // Removes specified characters from the given string
         public static string RemoveCharacters(this string input, char[] charactersToRemove) {
             return new string(input.Where(c => !charactersToRemove.Contains(c)).ToArray());
-        }
-
-        // Replaces specified substring with a new substring
-        public static string ReplaceSubstring(this string input, string oldValue, string newValue) {
-            return input.Replace(oldValue, newValue);
-        }
-
-        // Converts input string to TitleCase
-        public static string ToTitleCase(this string input) {
-            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input);
         }
 
         // Validates email address
@@ -53,28 +43,6 @@ namespace Strings {
             return regex.IsMatch(phoneNumber);
         }
 
-        // Detects encoding of the given string
-        public static Encoding DetectEncoding(this string input) {
-            byte[] bytes = Encoding.Default.GetBytes(input);
-
-            if (bytes.Length >= 2 && bytes[0] == 0xff && bytes[1] == 0xfe)
-            {
-                return Encoding.Unicode;
-            }
-
-            if (bytes.Length >= 2 && bytes[0] == 0xfe && bytes[1] == 0xff)
-            {
-                return Encoding.BigEndianUnicode;
-            }
-
-            if (bytes.Length >= 3 && bytes[0] == 0xef && bytes[1] == 0xbb && bytes[2] == 0xbf)
-            {
-                return Encoding.UTF8;
-            }
-
-            return Encoding.Default;
-        }
-
         // Counts the number of occurrences of a substring in the given string
         public static int CountSubstring(this string input, string substring) {
             if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(substring))
@@ -105,7 +73,7 @@ namespace Strings {
             // Check if the string is equal to its reverse
             return cleanString == new string(cleanString.Reverse().ToArray());
         }
-        
+
 
         // Counts the number of letters in the given string
         public static int CountLetters(this string input) {
