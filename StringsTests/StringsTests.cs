@@ -20,12 +20,26 @@ public class Tests {
         }
 
         [Test]
+        public void TestIsValidEmailOld() {
+            string email = "john.doe@example.com";
+            bool result = email.IsValidEmailOld();
+            Assert.IsTrue(result);
+        }
+        
+        [Test]
         public void TestIsValidEmail() {
             string email = "john.doe@example.com";
             bool result = email.IsValidEmail();
             Assert.IsTrue(result);
         }
 
+        [Test]
+        public void TestIsValidPhoneNumberOld() {
+            string phoneNumber = "555-555-5555";
+            bool result = phoneNumber.IsValidPhoneNumberOld();
+            Assert.IsTrue(result);
+        }
+        
         [Test]
         public void TestIsValidPhoneNumber() {
             string phoneNumber = "555-555-5555";
