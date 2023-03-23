@@ -17,17 +17,34 @@ namespace StringsPerf {
         private readonly string newValue = "everyone";
 
         private readonly string substring = "l";
+        
+        private readonly string phoneNumber = "555-555-5555";
+        private readonly string email = "john.doe@example.com";
 
         [Benchmark]
         public string RemoveCharacters() {
             return input.RemoveCharacters(charactersToRemove);
         }
 
+        [Benchmark]
+        public bool IsValidEmailOld() {
+            return email.IsValidEmailOld();
+        }
 
          [Benchmark]
          public bool IsValidEmail() {
-             string email = "john.doe@example.com";
              return email.IsValidEmail();
+         }
+
+         [Benchmark]
+         public bool IsValidPhoneNumberOld() {
+             return phoneNumber.IsValidPhoneNumberOld();
+         }
+         
+         [Benchmark]
+         public bool IsValidPhoneNumber() {
+             string phoneNumber = "555-555-5555";
+             return phoneNumber.IsValidPhoneNumber();
          }
 
          [Benchmark]
