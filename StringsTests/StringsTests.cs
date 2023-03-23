@@ -88,10 +88,18 @@ public class Tests {
         }
 
         [Test]
+        public void TestConvertToCamelCaseOld() {
+            string input = "hello_world";
+            string expected = "helloWorld";
+            string result = input.ConvertToCamelCaseOld();
+            Assert.That(result, Is.EqualTo(expected));
+        }
+        
+        [Test]
         public void TestConvertToCamelCase() {
             string input = "hello_world";
             string expected = "helloWorld";
-            string result = input.ConvertToCamelCase();
+            string result = input.ToCamelCase();
             Assert.That(result, Is.EqualTo(expected));
         }
     }
