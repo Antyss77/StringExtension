@@ -74,9 +74,15 @@ namespace StringsPerf {
          }
 
          [Benchmark]
+         public string ConvertToCamelCaseOld() {
+             string text = "hello_world";
+             return text.ConvertToCamelCaseOld();
+         }
+         
+         [Benchmark]
          public string ConvertToCamelCase() {
-             string input = "hello_world";
-             return input.ConvertToCamelCase();
+             string text = "hello_world";
+             return text.ToCamelCase();
          }
     }
 }
