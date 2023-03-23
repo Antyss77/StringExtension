@@ -21,7 +21,7 @@ namespace Strings {
         /// <returns>A regular expression that can be used to validate a phone number.</returns>
         [GeneratedRegex(@"^(\+?\d{1,3}[\s-]?)?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}$")]
         private static partial Regex PhoneNumberRegex();
-        
+
         // Removes specified characters from the given string
         public static string RemoveCharacters(this string input, char[] charactersToRemove) {
             return new string(input.Where(c => !charactersToRemove.Contains(c)).ToArray());
@@ -164,7 +164,8 @@ namespace Strings {
         }
 
         // Converts input string to camel case
-        public static string ConvertToCamelCase(this string input) {
+        [Obsolete("Use ToCamelCase instead")]
+        public static string ConvertToCamelCaseOld(this string input) {
             if (string.IsNullOrEmpty(input))
             {
                 return input;
@@ -183,6 +184,48 @@ namespace Strings {
 
             // Join words and return result
             return string.Join("", words);
+        }
+        
+        /// <summary>
+        /// Converts the given string to camel case.
+        /// </summary>
+        /// <param name="input">The input to transform.</param>
+        /// <returns>The input string converted to camel case.</returns>
+        public static string ToCamelCase(this string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return string.Empty;
+            }
+            
+            var span = input.AsSpan();
+
+            Span<char> output = stackalloc char[input.Length];
+            
+            var outputIndex = 0;
+            var shouldCapitalize = false;
+
+            foreach (var c in span)
+            {
+                if (char.IsWhiteSpace(c) || c == '_')
+                {
+                    shouldCapitalize = true;
+                }
+                else
+                {
+                    if (shouldCapitalize)
+                    {
+                        output[outputIndex++] = char.ToUpperInvariant(c);
+                        shouldCapitalize = false;
+                    }
+                    else
+                    {
+                        output[outputIndex++] = char.ToLowerInvariant(c);
+                    }
+                }
+            }
+
+            return new string(output[..outputIndex]);
         }
     }
 }
