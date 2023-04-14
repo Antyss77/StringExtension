@@ -1,5 +1,6 @@
-# Strings 
+# StringExtension 
 A string processing library for the C# programming language. It provides features to manipulate and transform strings in a simple and efficient way. The library is open-source and provided with unit tests and performance tests. It is designed to be easily integrated into your existing projects. Feel free to contribute to the project with ideas or development expertise.
+
 ## Features
 
 - RemoveCharacters - removes the specified characters from a string
@@ -11,6 +12,14 @@ A string processing library for the C# programming language. It provides feature
 - CountLetters - counts the number of letters in a given string.
 - RemoveDuplicateCharacters - remove duplicate characters from a given string.
 - ConvertToCamelCase - converts a given string to camel case.
+
+## Installation
+
+Install StringExtension using the following NuGet command
+```bash
+  nuget install StringExtension
+```
+
 
 ## Running Tests
  - The unit tests are  [here](https://github.com/Antyss77/Strings/blob/master/StringsTests/StringsTests.cs)  
