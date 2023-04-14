@@ -5,7 +5,7 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <IsPackable>false</IsPackable>
-        <RootNamespace>StringsTests</RootNamespace>
+        <RootNamespace>StringExtensionTests</RootNamespace>
 
     </PropertyGroup>
 
