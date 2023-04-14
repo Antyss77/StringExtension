@@ -15,9 +15,9 @@ A string processing library for the C# programming language. It provides feature
 
 ## Installation
 
-Install StringExtension using the following NuGet command
+Install [StringExtension](https://www.nuget.org/packages/String-Extension/) using the following NuGet command
 ```bash
-  nuget install StringExtension
+  nuget install String-Extension
 ```
 
 

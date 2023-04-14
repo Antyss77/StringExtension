@@ -12,8 +12,9 @@
         <TargetFramework>net7.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageId>String-Extension</PackageId>
-        <Version>1.5.0</Version>
+        <Version>1.5.1</Version>
         <ProjectUrl>https://github.com/Antyss77/StringExtension</ProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Copyright>Copyright © Antyss77 2023</Copyright>
         <Description>This package provides useful extensions for string manipulation.</Description>
         <RepositoryUrl>https://github.com/Antyss77/StringExtension</RepositoryUrl>
