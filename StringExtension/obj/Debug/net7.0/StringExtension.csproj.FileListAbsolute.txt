@@ -1,0 +1,12 @@
+C:\Users\leant\Desktop\temp-workspace\StringExtension\StringExtension\bin\Debug\net7.0\StringExtension.deps.json
+C:\Users\leant\Desktop\temp-workspace\StringExtension\StringExtension\bin\Debug\net7.0\StringExtension.dll
+C:\Users\leant\Desktop\temp-workspace\StringExtension\StringExtension\bin\Debug\net7.0\StringExtension.pdb
+C:\Users\leant\Desktop\temp-workspace\StringExtension\StringExtension\obj\Debug\net7.0\StringExtension.csproj.AssemblyReference.cache
+C:\Users\leant\Desktop\temp-workspace\StringExtension\StringExtension\obj\Debug\net7.0\StringExtension.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\leant\Desktop\temp-workspace\StringExtension\StringExtension\obj\Debug\net7.0\StringExtension.AssemblyInfoInputs.cache
+C:\Users\leant\Desktop\temp-workspace\StringExtension\StringExtension\obj\Debug\net7.0\StringExtension.AssemblyInfo.cs
+C:\Users\leant\Desktop\temp-workspace\StringExtension\StringExtension\obj\Debug\net7.0\StringExtension.csproj.CoreCompileInputs.cache
+C:\Users\leant\Desktop\temp-workspace\StringExtension\StringExtension\obj\Debug\net7.0\StringExtension.dll
+C:\Users\leant\Desktop\temp-workspace\StringExtension\StringExtension\obj\Debug\net7.0\refint\StringExtension.dll
+C:\Users\leant\Desktop\temp-workspace\StringExtension\StringExtension\obj\Debug\net7.0\StringExtension.pdb
+C:\Users\leant\Desktop\temp-workspace\StringExtension\StringExtension\obj\Debug\net7.0\ref\StringExtension.dll

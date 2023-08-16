@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Benchmark.StringExtensionBenchmark-20230816-155011</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet v0.13.7, Windows 10 (10.0.19045.3324/22H2/2022Update)
+Intel Core i7-9750H CPU 2.60GHz, 1 CPU, 12 logical and 6 physical cores
+.NET SDK 7.0.306
+  [Host]     : .NET 7.0.9 (7.0.923.32018), X64 RyuJIT AVX2 DEBUG
+  DefaultJob : .NET 7.0.9 (7.0.923.32018), X64 RyuJIT AVX2
+</code></pre>
+<pre><code></code></pre>
+
+<table>
+<thead><tr><th>             Method</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>RemoveCharacters</td><td>305.79 ns</td><td>5.967 ns</td><td>8.168 ns</td><td>328 B</td>
+</tr><tr><td>IsValidEmail</td><td>79.97 ns</td><td>1.640 ns</td><td>4.625 ns</td><td>-</td>
+</tr><tr><td>IsValidPhoneNumber</td><td>170.67 ns</td><td>3.396 ns</td><td>5.083 ns</td><td>-</td>
+</tr><tr><td>CountSubstring</td><td>64.06 ns</td><td>0.470 ns</td><td>0.417 ns</td><td>40 B</td>
+</tr><tr><td>ReverseWords</td><td>44.00 ns</td><td>0.954 ns</td><td>1.949 ns</td><td>152 B</td>
+</tr><tr><td>IsPalindrome</td><td>416.24 ns</td><td>8.134 ns</td><td>16.245 ns</td><td>536 B</td>
+</tr><tr><td>CountLetters</td><td>104.75 ns</td><td>0.732 ns</td><td>0.612 ns</td><td>32 B</td>
+</tr><tr><td>RemoveDuplicateCharacters</td><td>253.15 ns</td><td>3.618 ns</td><td>3.021 ns</td><td>624 B</td>
+</tr><tr><td>ConvertToCamelCase</td><td>45.49 ns</td><td>0.214 ns</td><td>0.167 ns</td><td>48 B</td>
+</tr></tbody></table>
+</body>
+</html>
