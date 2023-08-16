@@ -26,7 +26,7 @@ Install [StringExtension](https://www.nuget.org/packages/String-Extension/) usin
 - The performance tests are [here](https://github.com/Antyss77/StringExtension/blob/master/Benchmarks/Benchmark.cs)
 
 ## Licence 
-Distributed under the MIT License. See [LICENCE](https://github.com/Antyss77/Strings/blob/master/LICENSE) for more information.
+Distributed under the MIT License. See [LICENCE](https://github.com/Antyss77/StringExtension/blob/master/LICENSE) for more information.
 
 ## Contributing
 You can contribute to the project in several ways: by proposing new ideas, reporting bugs you encounter, or improving existing code. If you would like to submit a change, you can open a Pull Request so that we can review your changes and incorporate them into the project if necessary. We welcome your participation and look forward to moving this string library project forward.
