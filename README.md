@@ -22,8 +22,8 @@ Install [StringExtension](https://www.nuget.org/packages/String-Extension/) usin
 
 
 ## Running Tests
- - The unit tests are  [here](https://github.com/Antyss77/Strings/blob/master/StringsTests/StringsTests.cs)  
-- The performance tests are [here](https://github.com/Antyss77/Strings/blob/master/StringsTests/StringsPerf.cs)
+ - The unit tests are  [here](https://github.com/Antyss77/StringExtension/blob/master/UnitTests/UnitTest.cs)  
+- The performance tests are [here](https://github.com/Antyss77/StringExtension/blob/master/Benchmarks/Benchmark.cs)
 
 ## Licence 
 Distributed under the MIT License. See [LICENCE](https://github.com/Antyss77/Strings/blob/master/LICENSE) for more information.
