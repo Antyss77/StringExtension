@@ -8,14 +8,14 @@ Intel Core i7-9750H CPU 2.60GHz, 1 CPU, 12 logical and 6 physical cores
 
 
 ```
-|                    Method |      Mean |    Error |    StdDev | Allocated |
-|-------------------------- |----------:|---------:|----------:|----------:|
-|          RemoveCharacters | 305.79 ns | 5.967 ns |  8.168 ns |     328 B |
-|              IsValidEmail |  79.97 ns | 1.640 ns |  4.625 ns |         - |
-|        IsValidPhoneNumber | 170.67 ns | 3.396 ns |  5.083 ns |         - |
-|            CountSubstring |  64.06 ns | 0.470 ns |  0.417 ns |      40 B |
-|              ReverseWords |  44.00 ns | 0.954 ns |  1.949 ns |     152 B |
-|              IsPalindrome | 416.24 ns | 8.134 ns | 16.245 ns |     536 B |
-|              CountLetters | 104.75 ns | 0.732 ns |  0.612 ns |      32 B |
-| RemoveDuplicateCharacters | 253.15 ns | 3.618 ns |  3.021 ns |     624 B |
-|        ConvertToCamelCase |  45.49 ns | 0.214 ns |  0.167 ns |      48 B |
+|                    Method |      Mean |     Error |    StdDev | Allocated |
+|-------------------------- |----------:|----------:|----------:|----------:|
+|          RemoveCharacters | 368.67 ns |  7.008 ns | 17.058 ns |     328 B |
+|              IsValidEmail |  96.72 ns |  2.697 ns |  7.868 ns |         - |
+|        IsValidPhoneNumber | 191.88 ns |  3.883 ns | 10.758 ns |         - |
+|            CountSubstring |  63.27 ns |  1.306 ns |  1.603 ns |      40 B |
+|              ReverseWords |  46.03 ns |  0.977 ns |  1.432 ns |     152 B |
+|              IsPalindrome | 648.51 ns | 12.651 ns | 19.319 ns |     648 B |
+|              CountLetters | 123.07 ns |  2.478 ns |  6.396 ns |      32 B |
+| RemoveDuplicateCharacters | 326.46 ns |  6.632 ns | 19.555 ns |     624 B |
+|        ConvertToCamelCase |  65.63 ns |  1.386 ns |  1.753 ns |      48 B |

@@ -1,13 +1,16 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
 
-
 namespace StringExtension {
+    /// <summary>
+    /// Provides extension methods for string manipulation.
+    /// </summary>
     public static partial class StringExtension {
+
         /// <summary>
-        /// Represents a regular expression that can be used to validate a mail address.
+        /// Represents a regular expression that can be used to validate an email address.
         /// </summary>
-        /// <returns>A regular expression that can be used to validate a mail address.</returns>
+        /// <returns>A regular expression that can be used to validate an email address.</returns>
         [GeneratedRegex(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")]
         private static partial Regex MailAddressRegex();
 
@@ -18,12 +21,15 @@ namespace StringExtension {
         [GeneratedRegex(@"^(\+?\d{1,3}[\s-]?)?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}$")]
         private static partial Regex PhoneNumberRegex();
 
-
-        // Removes specified characters from the given string
+        /// <summary>
+        /// Removes specified characters from the given string.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="charactersToRemove">An array of characters to remove.</param>
+        /// <returns>A new string with specified characters removed.</returns>
         public static string RemoveCharacters(this string input, char[] charactersToRemove) {
             return new string(input.Where(c => !charactersToRemove.Contains(c)).ToArray());
         }
-
 
         /// <summary>
         /// Validates the given email address.
@@ -34,7 +40,6 @@ namespace StringExtension {
             return !string.IsNullOrEmpty(email) && MailAddressRegex().IsMatch(email);
         }
 
-
         /// <summary>
         /// Validates the given phone number.
         /// </summary>
@@ -44,7 +49,12 @@ namespace StringExtension {
             return !string.IsNullOrEmpty(phoneNumber) && PhoneNumberRegex().IsMatch(phoneNumber);
         }
 
-        // Counts the number of occurrences of a substring in the given string
+        /// <summary>
+        /// Counts the number of occurrences of a substring in the given string.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="substring">The substring to count.</param>
+        /// <returns>The number of occurrences of the substring in the input string.</returns>
         public static int CountSubstring(this string input, string substring) {
             if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(substring))
             {
@@ -83,7 +93,11 @@ namespace StringExtension {
             return builder.ToString();
         }
 
-        // Determines if the given string is a palindrome
+        /// <summary>
+        /// Determines if the given string is a palindrome.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <returns><c>true</c> if the string is a palindrome; otherwise, <c>false</c>.</returns>
         public static bool IsPalindrome(this string input) {
             // Remove all non-letter characters and convert to lowercase
             string cleanString = new string(input.Where(char.IsLetter).Select(char.ToLower).ToArray());
@@ -92,14 +106,21 @@ namespace StringExtension {
             return cleanString == new string(cleanString.Reverse().ToArray());
         }
 
-
-        // Counts the number of letters in the given string
+        /// <summary>
+        /// Counts the number of letters in the given string.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <returns>The number of letters in the input string.</returns>
         public static int CountLetters(this string input) {
             // Remove all non-letter characters and count the length of the resulting string
             return input.Count(char.IsLetter);
         }
 
-        // Removes duplicate characters from the given string
+        /// <summary>
+        /// Removes duplicate characters from the given string.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <returns>A new string with duplicate characters removed.</returns>
         public static string RemoveDuplicateCharacters(this string input) {
             if (string.IsNullOrEmpty(input))
             {
@@ -116,7 +137,7 @@ namespace StringExtension {
         /// <summary>
         /// Converts the given string to camel case.
         /// </summary>
-        /// <param name="input">The input to transform.</param>
+        /// <param name="input">The input string.</param>
         /// <returns>The input string converted to camel case.</returns>
         public static string ToCamelCase(this string input) {
             if (string.IsNullOrEmpty(input))
