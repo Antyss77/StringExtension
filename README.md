@@ -1,4 +1,4 @@
-# StringExtension ![StringExtension](https://img.shields.io/badge/beta_v1.5.2-blue)
+# StringExtension ![StringExtension](https://img.shields.io/badge/beta_v1.5.3-blue)
 
 
 A string processing library for the C# programming language. It provides features to manipulate and transform strings in a simple and efficient way. The library is open-source and provided with unit tests and performance tests. It is designed to be easily integrated into your existing projects. Feel free to contribute to the project with ideas or development expertise.
