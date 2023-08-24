@@ -11,14 +11,15 @@ namespace StringExtension {
         /// Represents a regular expression that can be used to validate an email address.
         /// </summary>
         /// <returns>A regular expression that can be used to validate an email address.</returns>
-        [GeneratedRegex(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")]
+        [GeneratedRegex(@"[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+")]
+        
         private static partial Regex MailAddressRegex();
 
         /// <summary>
         /// Represents a regular expression that can be used to validate a phone number.
         /// </summary>
         /// <returns>A regular expression that can be used to validate a phone number.</returns>
-        [GeneratedRegex(@"^(\+?\d{1,3}[\s-]?)?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}$")]
+        [GeneratedRegex(@"^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$")]
         private static partial Regex PhoneNumberRegex();
 
         /// <summary>
