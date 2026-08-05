@@ -1,4 +1,4 @@
-# StringExtension ![StringExtension](https://img.shields.io/badge/beta_v1.5.3-blue)
+# StringExtension ![StringExtension](https://img.shields.io/badge/beta_v1.5.4-blue)
 
 
 A string processing library for the C# programming language. It provides features to manipulate and transform strings in a simple and efficient way. The library is open-source and provided with unit tests and performance tests. It is designed to be easily integrated into your existing projects. Feel free to contribute to the project with ideas or development expertise.
@@ -13,7 +13,7 @@ A string processing library for the C# programming language. It provides feature
 - IsPalindrome - determines if a given string is a [palindrome](https://en.wikipedia.org/wiki/Palindrome)
 - CountLetters - counts the number of letters in a given string.
 - RemoveDuplicateCharacters - remove duplicate characters from a given string.
-- ConvertToCamelCase - converts a given string to camel case.
+- ToCamelCase - converts a given string to camel case.
 
 ## Installation
 
