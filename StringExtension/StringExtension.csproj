@@ -7,11 +7,16 @@
 
     <PropertyGroup>
         <PackageId>String-Extension</PackageId>
-        <Version>1.5.4</Version>
+        <Version>1.5.5</Version>
         <Authors>Antyss77</Authors>
         <Description>A C# library that provides utility methods for manipulating strings.</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/Antyss77/StringExtension</RepositoryUrl>
         <PackageProjectUrl>https://github.com/Antyss77/StringExtension</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 </Project>
