@@ -25,6 +25,17 @@ public class Tests {
         }
 
         /// <summary>
+        /// Tests that RemoveCharacters handles a null input gracefully.
+        /// </summary>
+        [Test]
+        public void TestRemoveCharacters_NullInput() {
+            string input = null;
+            char[] charactersToRemove = {'l', 'o'};
+            string result = input.RemoveCharacters(charactersToRemove);
+            Assert.That(result, Is.Null);
+        }
+
+        /// <summary>
         /// Tests the IsValidEmail method.
         /// </summary>
         [Test]
@@ -72,6 +83,16 @@ public class Tests {
         }
 
         /// <summary>
+        /// Tests that ReverseWords handles a null input gracefully.
+        /// </summary>
+        [Test]
+        public void TestReverseWords_NullInput() {
+            string input = null;
+            string result = input.ReverseWords();
+            Assert.That(result, Is.Null);
+        }
+
+        /// <summary>
         /// Tests the IsPalindrome method.
         /// </summary>
         [Test]
@@ -80,6 +101,16 @@ public class Tests {
             bool result = input.IsPalindrome();
             Assert.IsTrue(result);
             // Test code and assertions explained in code.
+        }
+
+        /// <summary>
+        /// Tests that IsPalindrome handles a null input gracefully.
+        /// </summary>
+        [Test]
+        public void TestIsPalindrome_NullInput() {
+            string input = null;
+            bool result = input.IsPalindrome();
+            Assert.IsFalse(result);
         }
 
         /// <summary>
@@ -92,6 +123,16 @@ public class Tests {
             int result = input.CountLetters();
             Assert.That(result, Is.EqualTo(expected));
             // Test code and assertions explained in code.
+        }
+
+        /// <summary>
+        /// Tests that CountLetters handles a null input gracefully.
+        /// </summary>
+        [Test]
+        public void TestCountLetters_NullInput() {
+            string input = null;
+            int result = input.CountLetters();
+            Assert.That(result, Is.EqualTo(0));
         }
 
         /// <summary>
@@ -116,6 +157,18 @@ public class Tests {
             string result = input.ToCamelCase();
             Assert.That(result, Is.EqualTo(expected));
             // Test code and assertions explained in code.
+        }
+
+        /// <summary>
+        /// Tests that ToCamelCase correctly lowercases the first character
+        /// even when the input starts with a separator.
+        /// </summary>
+        [Test]
+        public void TestConvertToCamelCase_LeadingSeparator() {
+            string input = "_hello_world";
+            string expected = "helloWorld";
+            string result = input.ToCamelCase();
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }
