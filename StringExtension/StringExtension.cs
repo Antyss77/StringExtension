@@ -29,6 +29,11 @@ namespace StringExtension {
         /// <param name="charactersToRemove">An array of characters to remove.</param>
         /// <returns>A new string with specified characters removed.</returns>
         public static string RemoveCharacters(this string input, char[] charactersToRemove) {
+            if (string.IsNullOrEmpty(input) || charactersToRemove is null || charactersToRemove.Length == 0)
+            {
+                return input;
+            }
+
             return new string(input.Where(c => !charactersToRemove.Contains(c)).ToArray());
         }
 
@@ -71,6 +76,11 @@ namespace StringExtension {
         /// <param name="input">The input to reverse words.</param>
         /// <returns>The input string with the order of words reversed.</returns>
         public static string ReverseWords(this string input) {
+            if (string.IsNullOrEmpty(input))
+            {
+                return input;
+            }
+
             var span = input.AsSpan();
 
             var builder = new StringBuilder();
@@ -100,8 +110,13 @@ namespace StringExtension {
         /// <param name="input">The input string.</param>
         /// <returns><c>true</c> if the string is a palindrome; otherwise, <c>false</c>.</returns>
         public static bool IsPalindrome(this string input) {
+            if (string.IsNullOrEmpty(input))
+            {
+                return false;
+            }
+
             // Remove all non-letter characters and convert to lowercase
-            string cleanString = new string(input.Where(char.IsLetter).Select(char.ToLower).ToArray());
+            string cleanString = new string(input.Where(char.IsLetter).Select(char.ToLowerInvariant).ToArray());
 
             // Check if the string is equal to its reverse
             return cleanString == new string(cleanString.Reverse().ToArray());
@@ -113,6 +128,11 @@ namespace StringExtension {
         /// <param name="input">The input string.</param>
         /// <returns>The number of letters in the input string.</returns>
         public static int CountLetters(this string input) {
+            if (string.IsNullOrEmpty(input))
+            {
+                return 0;
+            }
+
             // Remove all non-letter characters and count the length of the resulting string
             return input.Count(char.IsLetter);
         }
@@ -171,6 +191,13 @@ namespace StringExtension {
                         output[outputIndex++] = char.ToLowerInvariant(c);
                     }
                 }
+            }
+
+            // Ensure the very first character is always lowercase, even if the
+            // input starts with a separator (e.g. "_hello" should give "hello", not "Hello").
+            if (outputIndex > 0)
+            {
+                output[0] = char.ToLowerInvariant(output[0]);
             }
 
             return new string(output[..outputIndex]);
