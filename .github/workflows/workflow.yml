@@ -3,6 +3,7 @@ name: .NET
 on:
   push:
     branches: [ "master" ]
+    tags: [ "v*" ]
   pull_request:
     branches: [ "master" ]
 
@@ -10,6 +11,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - uses: actions/checkout@v3
@@ -25,3 +30,15 @@ jobs:
         run: dotnet test --no-build --verbosity normal
       - name: Benchmark
         run: dotnet run -c Release --project Benchmarks/Benchmarks.csproj
+      - name: Pack
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: dotnet pack StringExtension/StringExtension.csproj -c Release -o ./nupkg
+      - name: NuGet login (OIDC -> temp API key)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
+      - name: Push to NuGet
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: dotnet nuget push ./nupkg/*.nupkg --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json
