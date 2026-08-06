@@ -1,13 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net10.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
+ 
     <PropertyGroup>
         <PackageId>String-Extension</PackageId>
-        <Version>1.5.5</Version>
         <Authors>Antyss77</Authors>
         <Description>A C# library that provides utility methods for manipulating strings.</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -15,8 +14,9 @@
         <PackageProjectUrl>https://github.com/Antyss77/StringExtension</PackageProjectUrl>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
-
+ 
     <ItemGroup>
         <None Include="..\README.md" Pack="true" PackagePath="\" />
     </ItemGroup>
 </Project>
+ 
