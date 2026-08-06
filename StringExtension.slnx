@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Benchmarks/Benchmarks.csproj" />
+  <Project Path="StringExtension/StringExtension.csproj" />
+  <Project Path="UnitTests/UnitTests.csproj" />
+</Solution>
