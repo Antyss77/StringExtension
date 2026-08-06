@@ -24,7 +24,7 @@ Install [StringExtension](https://www.nuget.org/packages/String-Extension/) usin
 
 
 ## Running Tests
- - The unit tests are  [here](https://github.com/Antyss77/StringExtension/blob/master/UnitTests/UnitTest.cs)  
+ - The unit tests are  [here](https://github.com/Antyss77/StringExtension/blob/master/UnitTests/StringExtensionTests.cs)  
 - The performance tests are [here](https://github.com/Antyss77/StringExtension/blob/master/Benchmarks/Benchmark.cs)
 
 ## Licence 
@@ -32,5 +32,3 @@ Distributed under the MIT License. See [LICENCE](https://github.com/Antyss77/Str
 
 ## Contributing
 You can contribute to the project in several ways: by proposing new ideas, reporting bugs you encounter, or improving existing code. If you would like to submit a change, you can open a Pull Request so that we can review your changes and incorporate them into the project if necessary. We welcome your participation and look forward to moving this string library project forward.
-
-

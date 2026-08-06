@@ -4,3 +4,5 @@
 riderModule.iml
 /_ReSharper.Caches/
 .idea
+# BenchmarkDotNet output
+BenchmarkDotNet.Artifacts/

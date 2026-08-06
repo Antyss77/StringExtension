@@ -7,15 +7,14 @@ using StringExtension;
 BenchmarkRunner.Run<StringExtensionBenchmark>(
     ManualConfig.Create(DefaultConfig.Instance.WithOptions(ConfigOptions.DisableOptimizationsValidator)));
 
-
-namespace Benchmark {
-
+namespace Benchmark
+{
     /// <summary>
     /// Contains benchmarks for the StringExtension methods.
     /// </summary>
     [MemoryDiagnoser(false)]
-    public class StringExtensionBenchmark {
-
+    public class StringExtensionBenchmark
+    {
         private readonly string input = "hello world!";
         private readonly char[] charactersToRemove = { 'l', 'o' };
         private readonly string substring = "l";
@@ -26,7 +25,8 @@ namespace Benchmark {
         /// Benchmark for the RemoveCharacters method.
         /// </summary>
         [Benchmark]
-        public string RemoveCharacters() {
+        public string RemoveCharacters()
+        {
             return input.RemoveCharacters(charactersToRemove);
         }
 
@@ -34,7 +34,8 @@ namespace Benchmark {
         /// Benchmark for the IsValidEmail method.
         /// </summary>
         [Benchmark]
-        public bool IsValidEmail() {
+        public bool IsValidEmail()
+        {
             return email.IsValidEmail();
         }
 
@@ -42,7 +43,8 @@ namespace Benchmark {
         /// Benchmark for the IsValidPhoneNumber method.
         /// </summary>
         [Benchmark]
-        public bool IsValidPhoneNumber() {
+        public bool IsValidPhoneNumber()
+        {
             return phoneNumber.IsValidPhoneNumber();
         }
 
@@ -50,7 +52,8 @@ namespace Benchmark {
         /// Benchmark for the CountSubstring method.
         /// </summary>
         [Benchmark]
-        public int CountSubstring() {
+        public int CountSubstring()
+        {
             return input.CountSubstring(substring);
         }
 
@@ -58,7 +61,8 @@ namespace Benchmark {
         /// Benchmark for the ReverseWords method.
         /// </summary>
         [Benchmark]
-        public string ReverseWords() {
+        public string ReverseWords()
+        {
             return input.ReverseWords();
         }
 
@@ -66,7 +70,8 @@ namespace Benchmark {
         /// Benchmark for the IsPalindrome method.
         /// </summary>
         [Benchmark]
-        public bool IsPalindrome() {
+        public bool IsPalindrome()
+        {
             return input.IsPalindrome();
         }
 
@@ -74,7 +79,8 @@ namespace Benchmark {
         /// Benchmark for the CountLetters method.
         /// </summary>
         [Benchmark]
-        public int CountLetters() {
+        public int CountLetters()
+        {
             return input.CountLetters();
         }
 
@@ -82,7 +88,8 @@ namespace Benchmark {
         /// Benchmark for the RemoveDuplicateCharacters method.
         /// </summary>
         [Benchmark]
-        public string RemoveDuplicateCharacters() {
+        public string RemoveDuplicateCharacters()
+        {
             return input.RemoveDuplicateCharacters();
         }
 
@@ -90,7 +97,8 @@ namespace Benchmark {
         /// Benchmark for the ConvertToCamelCase method.
         /// </summary>
         [Benchmark]
-        public string ConvertToCamelCase() {
+        public string ConvertToCamelCase()
+        {
             return input.ToCamelCase();
         }
     }
