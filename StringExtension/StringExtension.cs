@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Buffers;
+using System.Text.RegularExpressions;
 
 namespace StringExtension;
 
@@ -7,6 +8,12 @@ namespace StringExtension;
 /// </summary>
 public static partial class StringExtension
 {
+    /// <summary>
+    /// Above this length, buffers are rented from <see cref="ArrayPool{T}"/> instead
+    /// of stack-allocated, to avoid excessive stack usage for large inputs.
+    /// </summary>
+    private const int StackAllocThreshold = 256;
+
     /// <summary>
     /// Represents a regular expression that can be used to validate an email address.
     /// </summary>
@@ -27,6 +34,7 @@ public static partial class StringExtension
     /// <param name="input">The input string.</param>
     /// <param name="charactersToRemove">An array of characters to remove.</param>
     /// <returns>A new string with specified characters removed.</returns>
+    /// <remarks>Returns <see langword="null"/> if <paramref name="input"/> is <see langword="null"/>.</remarks>
     public static string RemoveCharacters(this string input, char[] charactersToRemove)
     {
         if (string.IsNullOrEmpty(input) || charactersToRemove is null || charactersToRemove.Length == 0)
@@ -50,18 +58,31 @@ public static partial class StringExtension
             return input.ToString();
         }
 
-        Span<char> buffer = input.Length <= 256 ? stackalloc char[input.Length] : new char[input.Length];
-        var count = 0;
+        char[]? pooledBuffer = null;
+        Span<char> buffer = (uint)input.Length <= StackAllocThreshold
+            ? stackalloc char[input.Length]
+            : (pooledBuffer = ArrayPool<char>.Shared.Rent(input.Length));
 
-        foreach (var c in input)
+        try
         {
-            if (charactersToRemove.IndexOf(c) < 0)
+            var count = 0;
+            foreach (var c in input)
             {
-                buffer[count++] = c;
+                if (charactersToRemove.IndexOf(c) < 0)
+                {
+                    buffer[count++] = c;
+                }
+            }
+
+            return new string(buffer[..count]);
+        }
+        finally
+        {
+            if (pooledBuffer is not null)
+            {
+                ArrayPool<char>.Shared.Return(pooledBuffer);
             }
         }
-
-        return new string(buffer[..count]);
     }
 
     /// <summary>
@@ -112,11 +133,6 @@ public static partial class StringExtension
     /// <returns>The number of occurrences of the substring in the input string.</returns>
     public static int CountSubstring(this string input, string substring)
     {
-        if (string.IsNullOrEmpty(input) || string.IsNullOrEmpty(substring))
-        {
-            return 0;
-        }
-
         return CountSubstring(input.AsSpan(), substring.AsSpan());
     }
 
@@ -142,6 +158,7 @@ public static partial class StringExtension
     /// </summary>
     /// <param name="input">The input to reverse words.</param>
     /// <returns>The input string with the order of words reversed.</returns>
+    /// <remarks>Returns <see langword="null"/> if <paramref name="input"/> is <see langword="null"/>.</remarks>
     public static string ReverseWords(this string input)
     {
         if (string.IsNullOrEmpty(input))
@@ -149,8 +166,6 @@ public static partial class StringExtension
             return input;
         }
 
-        // string.Create needs the length up front, and it is preserved by a
-        // simple word swap around single-space separators.
         return string.Create(input.Length, input, static (span, source) =>
         {
             foreach (Range word in source.AsSpan().Split(' '))
@@ -179,7 +194,7 @@ public static partial class StringExtension
     /// <returns><c>true</c> if the string is a palindrome; otherwise, <c>false</c>.</returns>
     public static bool IsPalindrome(this string input)
     {
-        return !string.IsNullOrEmpty(input) && IsPalindrome(input.AsSpan());
+        return IsPalindrome(input.AsSpan());
     }
 
     /// <summary>
@@ -231,11 +246,6 @@ public static partial class StringExtension
     /// <returns>The number of letters in the input string.</returns>
     public static int CountLetters(this string input)
     {
-        if (string.IsNullOrEmpty(input))
-        {
-            return 0;
-        }
-
         return CountLetters(input.AsSpan());
     }
 
@@ -263,6 +273,7 @@ public static partial class StringExtension
     /// </summary>
     /// <param name="input">The input string.</param>
     /// <returns>A new string with duplicate characters removed.</returns>
+    /// <remarks>Returns <see langword="null"/> if <paramref name="input"/> is <see langword="null"/>.</remarks>
     public static string RemoveDuplicateCharacters(this string input)
     {
         if (string.IsNullOrEmpty(input))
@@ -286,19 +297,33 @@ public static partial class StringExtension
             return string.Empty;
         }
 
-        Span<char> buffer = input.Length <= 256 ? stackalloc char[input.Length] : new char[input.Length];
-        var seen = new HashSet<char>(input.Length);
-        var count = 0;
+        char[]? pooledBuffer = null;
+        Span<char> buffer = (uint)input.Length <= StackAllocThreshold
+            ? stackalloc char[input.Length]
+            : (pooledBuffer = ArrayPool<char>.Shared.Rent(input.Length));
 
-        foreach (var c in input)
+        try
         {
-            if (seen.Add(c))
+            var seen = new HashSet<char>(input.Length);
+            var count = 0;
+
+            foreach (var c in input)
             {
-                buffer[count++] = c;
+                if (seen.Add(c))
+                {
+                    buffer[count++] = c;
+                }
+            }
+
+            return new string(buffer[..count]);
+        }
+        finally
+        {
+            if (pooledBuffer is not null)
+            {
+                ArrayPool<char>.Shared.Return(pooledBuffer);
             }
         }
-
-        return new string(buffer[..count]);
     }
 
     /// <summary>
@@ -308,11 +333,6 @@ public static partial class StringExtension
     /// <returns>The input string converted to camel case.</returns>
     public static string ToCamelCase(this string input)
     {
-        if (string.IsNullOrEmpty(input))
-        {
-            return string.Empty;
-        }
-
         return ToCamelCase(input.AsSpan());
     }
 
@@ -328,30 +348,43 @@ public static partial class StringExtension
             return string.Empty;
         }
 
-        Span<char> buffer = input.Length <= 256 ? stackalloc char[input.Length] : new char[input.Length];
+        char[]? pooledBuffer = null;
+        Span<char> buffer = (uint)input.Length <= StackAllocThreshold
+            ? stackalloc char[input.Length]
+            : (pooledBuffer = ArrayPool<char>.Shared.Rent(input.Length));
 
-        var count = 0;
-        var shouldCapitalize = false;
-
-        foreach (var c in input)
+        try
         {
-            if (char.IsWhiteSpace(c) || c == '_')
+            var count = 0;
+            var shouldCapitalize = false;
+
+            foreach (var c in input)
             {
-                shouldCapitalize = true;
-                continue;
+                if (char.IsWhiteSpace(c) || c == '_')
+                {
+                    shouldCapitalize = true;
+                    continue;
+                }
+
+                buffer[count++] = shouldCapitalize ? char.ToUpperInvariant(c) : char.ToLowerInvariant(c);
+                shouldCapitalize = false;
             }
 
-            buffer[count++] = shouldCapitalize ? char.ToUpperInvariant(c) : char.ToLowerInvariant(c);
-            shouldCapitalize = false;
-        }
+            // The very first character is always lowercase, even if the input
+            // started with a separator (e.g. "_hello" gives "hello", not "Hello").
+            if (count > 0)
+            {
+                buffer[0] = char.ToLowerInvariant(buffer[0]);
+            }
 
-        // The very first character is always lowercase, even if the input
-        // started with a separator (e.g. "_hello" gives "hello", not "Hello").
-        if (count > 0)
+            return new string(buffer[..count]);
+        }
+        finally
         {
-            buffer[0] = char.ToLowerInvariant(buffer[0]);
+            if (pooledBuffer is not null)
+            {
+                ArrayPool<char>.Shared.Return(pooledBuffer);
+            }
         }
-
-        return new string(buffer[..count]);
     }
 }
