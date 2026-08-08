@@ -1,4 +1,7 @@
 using StringExtension;
+using StringExtension.Casing;
+using StringExtension.Linguistics;
+using StringExtension.Validation;
 
 namespace UnitTests;
 
@@ -126,6 +129,22 @@ public class StringExtensionTests
     }
 
     /// <summary>
+    /// Tests that IsPalindrome correctly compares characters outside the Basic
+    /// Multilingual Plane (encoded as UTF-16 surrogate pairs) as whole units.
+    /// "\U0001D49C" and "\U0001D4B7" are two different mathematical script
+    /// letters; treating each surrogate half as a separate "non-letter" character
+    /// (the pre-Rune behavior) would have skipped them entirely and produced a
+    /// false positive.
+    /// </summary>
+    [Test]
+    public void TestIsPalindrome_SurrogatePairLetters()
+    {
+        string input = "\U0001D49Cb\U0001D4B7";
+        bool result = input.IsPalindrome();
+        Assert.That(result, Is.False);
+    }
+
+    /// <summary>
     /// Tests the CountLetters method.
     /// </summary>
     [Test]
@@ -146,6 +165,21 @@ public class StringExtensionTests
         string input = null!;
         int result = input.CountLetters();
         Assert.That(result, Is.EqualTo(0));
+    }
+
+    /// <summary>
+    /// Tests that CountLetters correctly counts a letter outside the Basic
+    /// Multilingual Plane. "\U0001D49C" (MATHEMATICAL SCRIPT CAPITAL A) is
+    /// encoded as a UTF-16 surrogate pair; the pre-Rune implementation counted
+    /// it as 0 letters, since neither surrogate half is classified as a letter
+    /// on its own.
+    /// </summary>
+    [Test]
+    public void TestCountLetters_SurrogatePairLetter()
+    {
+        string input = "\U0001D49C";
+        int result = input.CountLetters();
+        Assert.That(result, Is.EqualTo(1));
     }
 
     /// <summary>
@@ -181,6 +215,20 @@ public class StringExtensionTests
     {
         string input = "_hello_world";
         string expected = "helloWorld";
+        string result = input.ToCamelCase();
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    /// <summary>
+    /// Tests that ToCamelCase preserves a character outside the Basic Multilingual
+    /// Plane (a surrogate pair) intact, instead of splitting or corrupting it.
+    /// "\U0001F389" is the party popper emoji (🎉).
+    /// </summary>
+    [Test]
+    public void TestConvertToCamelCase_SurrogatePair()
+    {
+        string input = "hello_\U0001F389_world";
+        string expected = "hello\U0001F389World";
         string result = input.ToCamelCase();
         Assert.That(result, Is.EqualTo(expected));
     }
