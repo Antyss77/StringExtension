@@ -3,6 +3,9 @@ using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Running;
 using StringExtension;
+using StringExtension.Casing;
+using StringExtension.Linguistics;
+using StringExtension.Validation;
 
 BenchmarkRunner.Run<StringExtensionBenchmark>(
     ManualConfig.Create(DefaultConfig.Instance.WithOptions(ConfigOptions.DisableOptimizationsValidator)));

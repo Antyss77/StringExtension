@@ -5,15 +5,26 @@ A string processing library for the C# programming language. It provides feature
 
 ## Features
 
+> **Breaking change in v2.0.0**: methods are now split across namespaces by category. You'll need to add the relevant `using` statements below instead of a single `using StringExtension;`.
+
+`using StringExtension;`
 - RemoveCharacters - removes the specified characters from a string
-- IsValidEmail - validate an e-mail address
-- IsValidPhoneNumber - validate a phone number
 - CountSubstring - counts the number of occurrences of a string in the specified string
 - ReverseWords - reverses the order of words in the specified string
+- RemoveDuplicateCharacters - remove duplicate characters from a given string
+
+`using StringExtension.Validation;`
+- IsValidEmail - validate an e-mail address
+- IsValidPhoneNumber - validate a phone number
+
+`using StringExtension.Linguistics;`
 - IsPalindrome - determines if a given string is a [palindrome](https://en.wikipedia.org/wiki/Palindrome)
-- CountLetters - counts the number of letters in a given string.
-- RemoveDuplicateCharacters - remove duplicate characters from a given string.
-- ToCamelCase - converts a given string to camel case.
+- CountLetters - counts the number of letters in a given string
+
+`using StringExtension.Casing;`
+- ToCamelCase - converts a given string to camel case
+
+All methods that classify or compare characters (`IsPalindrome`, `CountLetters`, `ToCamelCase`) operate on whole Unicode scalar values (via [`Rune`](https://learn.microsoft.com/en-us/dotnet/api/system.text.rune)), so characters outside the Basic Multilingual Plane (such as many emoji) are handled correctly.
 
 ## Installation
 
