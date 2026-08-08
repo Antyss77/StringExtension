@@ -10,9 +10,10 @@ public static partial class StringExtension
 {
     /// <summary>
     /// Above this length, buffers are rented from <see cref="ArrayPool{T}"/> instead
-    /// of stack-allocated, to avoid excessive stack usage for large inputs.
+    /// of stack-allocated, to avoid excessive stack usage for large inputs. 512 chars
+    /// (1024 bytes) matches the safe stackalloc limit used throughout the BCL.
     /// </summary>
-    private const int StackAllocThreshold = 256;
+    private const int StackAllocThreshold = 512;
 
     /// <summary>
     /// Represents a regular expression that can be used to validate an email address.
