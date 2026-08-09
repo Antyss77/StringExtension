@@ -232,4 +232,101 @@ public class StringExtensionTests
         string result = input.ToCamelCase();
         Assert.That(result, Is.EqualTo(expected));
     }
+
+    /// <summary>
+    /// Tests that ToCamelCase treats a hyphen as a word separator.
+    /// </summary>
+    [Test]
+    public void TestConvertToCamelCase_HyphenSeparator()
+    {
+        string input = "hello-world";
+        string expected = "helloWorld";
+        string result = input.ToCamelCase();
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    /// <summary>
+    /// Tests the ToPascalCase method.
+    /// </summary>
+    [Test]
+    public void TestToPascalCase()
+    {
+        string input = "hello_world";
+        string expected = "HelloWorld";
+        string result = input.ToPascalCase();
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    /// <summary>
+    /// Tests the ToSnakeCase method with camelCase input.
+    /// </summary>
+    [Test]
+    public void TestToSnakeCase_CamelCaseInput()
+    {
+        string input = "helloWorld";
+        string expected = "hello_world";
+        string result = input.ToSnakeCase();
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    /// <summary>
+    /// Tests the ToSnakeCase method with space-separated input.
+    /// </summary>
+    [Test]
+    public void TestToSnakeCase_SpaceSeparatedInput()
+    {
+        string input = "hello world";
+        string expected = "hello_world";
+        string result = input.ToSnakeCase();
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    /// <summary>
+    /// Tests the ToKebabCase method with camelCase input.
+    /// </summary>
+    [Test]
+    public void TestToKebabCase_CamelCaseInput()
+    {
+        string input = "helloWorld";
+        string expected = "hello-world";
+        string result = input.ToKebabCase();
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    /// <summary>
+    /// Tests the ToTitleCase method with the default behavior (every word capitalized).
+    /// </summary>
+    [Test]
+    public void TestToTitleCase_Default()
+    {
+        string input = "the lord of the rings";
+        string expected = "The Lord Of The Rings";
+        string result = input.ToTitleCase();
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    /// <summary>
+    /// Tests the ToTitleCase method with English minor-word rules enabled.
+    /// </summary>
+    [Test]
+    public void TestToTitleCase_EnglishMinorWordRules()
+    {
+        string input = "the lord of the rings";
+        string expected = "The Lord of the Rings";
+        string result = input.ToTitleCase(useEnglishMinorWordRules: true);
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    /// <summary>
+    /// Tests that ToTitleCase always capitalizes the last word, even if it is
+    /// normally a minor word.
+    /// </summary>
+    [Test]
+    public void TestToTitleCase_LastWordAlwaysCapitalized()
+    {
+        string input = "what are you waiting for";
+        string expected = "What Are You Waiting For";
+        string result = input.ToTitleCase(useEnglishMinorWordRules: true);
+        Assert.That(result, Is.EqualTo(expected));
+    }
 }
