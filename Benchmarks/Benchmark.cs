@@ -140,5 +140,14 @@ namespace Benchmark
         {
             return input.ToTitleCase();
         }
+
+        /// <summary>
+        /// Benchmark for the Slugify method.
+        /// </summary>
+        [Benchmark]
+        public string Slugify()
+        {
+            return input.Slugify();
+        }
     }
 }
