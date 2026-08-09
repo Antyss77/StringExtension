@@ -104,5 +104,41 @@ namespace Benchmark
         {
             return input.ToCamelCase();
         }
+
+        /// <summary>
+        /// Benchmark for the ToPascalCase method.
+        /// </summary>
+        [Benchmark]
+        public string ToPascalCase()
+        {
+            return input.ToPascalCase();
+        }
+
+        /// <summary>
+        /// Benchmark for the ToSnakeCase method.
+        /// </summary>
+        [Benchmark]
+        public string ToSnakeCase()
+        {
+            return input.ToSnakeCase();
+        }
+
+        /// <summary>
+        /// Benchmark for the ToKebabCase method.
+        /// </summary>
+        [Benchmark]
+        public string ToKebabCase()
+        {
+            return input.ToKebabCase();
+        }
+
+        /// <summary>
+        /// Benchmark for the ToTitleCase method.
+        /// </summary>
+        [Benchmark]
+        public string ToTitleCase()
+        {
+            return input.ToTitleCase();
+        }
     }
 }
