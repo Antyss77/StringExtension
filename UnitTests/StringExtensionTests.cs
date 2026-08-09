@@ -329,4 +329,53 @@ public class StringExtensionTests
         string result = input.ToTitleCase(useEnglishMinorWordRules: true);
         Assert.That(result, Is.EqualTo(expected));
     }
+
+
+    /// <summary>
+    /// Tests the Slugify method with accented characters and punctuation.
+    /// </summary>
+    [Test]
+    public void TestSlugify()
+    {
+        string input = "Café de la Gare! 2024";
+        string expected = "cafe-de-la-gare-2024";
+        string result = input.Slugify();
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    /// <summary>
+    /// Tests that Slugify supports a custom separator.
+    /// </summary>
+    [Test]
+    public void TestSlugify_CustomSeparator()
+    {
+        string input = "Hello World";
+        string expected = "hello_world";
+        string result = input.Slugify('_');
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    /// <summary>
+    /// Tests that Slugify does not produce leading or trailing separators
+    /// when the input starts or ends with punctuation.
+    /// </summary>
+    [Test]
+    public void TestSlugify_NoLeadingOrTrailingSeparator()
+    {
+        string input = "!!!Hello World!!!";
+        string expected = "hello-world";
+        string result = input.Slugify();
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    /// <summary>
+    /// Tests that Slugify returns an empty string for a null input.
+    /// </summary>
+    [Test]
+    public void TestSlugify_NullInput()
+    {
+        string input = null!;
+        string result = input.Slugify();
+        Assert.That(result, Is.EqualTo(string.Empty));
+    }
 }

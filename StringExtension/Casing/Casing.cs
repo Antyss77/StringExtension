@@ -1,4 +1,5 @@
 using System.Buffers;
+using System.Globalization;
 using System.Text;
 using StringExtension.Internal;
 
@@ -387,5 +388,76 @@ public static class Casing
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Converts the given string into a URL-friendly slug: lowercase, with accents
+    /// removed and every run of non-alphanumeric characters collapsed into a single
+    /// <paramref name="separator"/>.
+    /// </summary>
+    /// <param name="input">The input string.</param>
+    /// <param name="separator">The character used to join words. Defaults to <c>-</c>.</param>
+    /// <returns>The slugified string.</returns>
+    /// <remarks>
+    /// Accented Latin letters are converted to their unaccented equivalent (e.g.
+    /// "é" becomes "e") via Unicode decomposition. Letters from non-Latin scripts
+    /// (e.g. Cyrillic, CJK) are lowercased and kept as-is rather than being
+    /// stripped or transliterated. Returns <see cref="string.Empty"/> if
+    /// <paramref name="input"/> is <see langword="null"/> or empty.
+    /// </remarks>
+    public static string Slugify(this string input, char separator = '-')
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            return string.Empty;
+        }
+
+        ReadOnlySpan<char> normalized = input.Normalize(NormalizationForm.FormD);
+
+        char[]? pooledBuffer = null;
+        Span<char> buffer = (uint)normalized.Length <= BufferLimits.StackAllocThreshold
+            ? stackalloc char[normalized.Length]
+            : (pooledBuffer = ArrayPool<char>.Shared.Rent(normalized.Length));
+
+        try
+        {
+            var count = 0;
+            var pendingSeparator = false;
+
+            foreach (var rune in normalized.EnumerateRunes())
+            {
+                if (Rune.GetUnicodeCategory(rune) == UnicodeCategory.NonSpacingMark)
+                {
+                    // A combining accent mark produced by decomposition (e.g. the
+                    // acute accent split off "é"). The base letter it modifies was
+                    // already appended; drop the mark itself.
+                    continue;
+                }
+
+                if (Rune.IsLetterOrDigit(rune))
+                {
+                    if (pendingSeparator && count > 0)
+                    {
+                        buffer[count++] = separator;
+                    }
+
+                    count += Rune.ToLowerInvariant(rune).EncodeToUtf16(buffer[count..]);
+                    pendingSeparator = false;
+                }
+                else
+                {
+                    pendingSeparator = true;
+                }
+            }
+
+            return new string(buffer[..count]);
+        }
+        finally
+        {
+            if (pooledBuffer is not null)
+            {
+                ArrayPool<char>.Shared.Return(pooledBuffer);
+            }
+        }
     }
 }
