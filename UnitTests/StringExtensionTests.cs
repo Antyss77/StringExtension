@@ -19,7 +19,7 @@ public class StringExtensionTests
         string input = "hello world!";
         char[] charactersToRemove = { 'l', 'o' };
         string expected = "he wrd!";
-        string result = input.RemoveCharacters(charactersToRemove);
+        string? result = input.RemoveCharacters(charactersToRemove);
         Assert.That(result, Is.EqualTo(expected));
     }
 
@@ -31,7 +31,7 @@ public class StringExtensionTests
     {
         string input = null!;
         char[] charactersToRemove = { 'l', 'o' };
-        string result = input.RemoveCharacters(charactersToRemove);
+        string? result = input.RemoveCharacters(charactersToRemove);
         Assert.That(result, Is.Null);
     }
 
@@ -91,7 +91,7 @@ public class StringExtensionTests
     {
         string input = "hello world!";
         string expected = "world! hello";
-        string result = input.ReverseWords();
+        string? result = input.ReverseWords();
         Assert.That(result, Is.EqualTo(expected));
     }
 
@@ -102,7 +102,7 @@ public class StringExtensionTests
     public void TestReverseWords_NullInput()
     {
         string input = null!;
-        string result = input.ReverseWords();
+        string? result = input.ReverseWords();
         Assert.That(result, Is.Null);
     }
 
@@ -190,7 +190,7 @@ public class StringExtensionTests
     {
         string input = "hello world!";
         string expected = "helo wrd!";
-        string result = input.RemoveDuplicateCharacters();
+        string? result = input.RemoveDuplicateCharacters();
         Assert.That(result, Is.EqualTo(expected));
     }
 
@@ -329,7 +329,6 @@ public class StringExtensionTests
         string result = input.ToTitleCase(useEnglishMinorWordRules: true);
         Assert.That(result, Is.EqualTo(expected));
     }
-
 
     /// <summary>
     /// Tests the Slugify method with accented characters and punctuation.

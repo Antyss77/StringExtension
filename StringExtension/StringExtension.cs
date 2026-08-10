@@ -15,7 +15,7 @@ public static class StringExtension
     /// <param name="charactersToRemove">An array of characters to remove.</param>
     /// <returns>A new string with specified characters removed.</returns>
     /// <remarks>Returns <see langword="null"/> if <paramref name="input"/> is <see langword="null"/>.</remarks>
-    public static string RemoveCharacters(this string input, char[] charactersToRemove)
+    public static string? RemoveCharacters(this string? input, char[]? charactersToRemove)
     {
         if (string.IsNullOrEmpty(input) || charactersToRemove is null || charactersToRemove.Length == 0)
         {
@@ -71,7 +71,8 @@ public static class StringExtension
     /// <param name="input">The input string.</param>
     /// <param name="substring">The substring to count.</param>
     /// <returns>The number of occurrences of the substring in the input string.</returns>
-    public static int CountSubstring(this string input, string substring)
+    /// <remarks>Returns <c>0</c> if <paramref name="input"/> or <paramref name="substring"/> is <see langword="null"/>.</remarks>
+    public static int CountSubstring(this string? input, string? substring)
     {
         return CountSubstring(input.AsSpan(), substring.AsSpan());
     }
@@ -99,7 +100,7 @@ public static class StringExtension
     /// <param name="input">The input to reverse words.</param>
     /// <returns>The input string with the order of words reversed.</returns>
     /// <remarks>Returns <see langword="null"/> if <paramref name="input"/> is <see langword="null"/>.</remarks>
-    public static string ReverseWords(this string input)
+    public static string? ReverseWords(this string? input)
     {
         if (string.IsNullOrEmpty(input))
         {
@@ -133,7 +134,7 @@ public static class StringExtension
     /// <param name="input">The input string.</param>
     /// <returns>A new string with duplicate characters removed.</returns>
     /// <remarks>Returns <see langword="null"/> if <paramref name="input"/> is <see langword="null"/>.</remarks>
-    public static string RemoveDuplicateCharacters(this string input)
+    public static string? RemoveDuplicateCharacters(this string? input)
     {
         if (string.IsNullOrEmpty(input))
         {

@@ -28,7 +28,7 @@ namespace Benchmark
         /// Benchmark for the RemoveCharacters method.
         /// </summary>
         [Benchmark]
-        public string RemoveCharacters()
+        public string? RemoveCharacters()
         {
             return input.RemoveCharacters(charactersToRemove);
         }
@@ -64,7 +64,7 @@ namespace Benchmark
         /// Benchmark for the ReverseWords method.
         /// </summary>
         [Benchmark]
-        public string ReverseWords()
+        public string? ReverseWords()
         {
             return input.ReverseWords();
         }
@@ -91,7 +91,7 @@ namespace Benchmark
         /// Benchmark for the RemoveDuplicateCharacters method.
         /// </summary>
         [Benchmark]
-        public string RemoveDuplicateCharacters()
+        public string? RemoveDuplicateCharacters()
         {
             return input.RemoveDuplicateCharacters();
         }

@@ -14,7 +14,8 @@ public static class Linguistics
     /// </summary>
     /// <param name="input">The input string.</param>
     /// <returns><c>true</c> if the string is a palindrome; otherwise, <c>false</c>.</returns>
-    public static bool IsPalindrome(this string input)
+    /// <remarks>Returns <see langword="false"/> if <paramref name="input"/> is <see langword="null"/>.</remarks>
+    public static bool IsPalindrome(this string? input)
     {
         return IsPalindrome(input.AsSpan());
     }
@@ -83,7 +84,8 @@ public static class Linguistics
     /// </summary>
     /// <param name="input">The input string.</param>
     /// <returns>The number of letters in the input string.</returns>
-    public static int CountLetters(this string input)
+    /// <remarks>Returns <c>0</c> if <paramref name="input"/> is <see langword="null"/>.</remarks>
+    public static int CountLetters(this string? input)
     {
         return CountLetters(input.AsSpan());
     }

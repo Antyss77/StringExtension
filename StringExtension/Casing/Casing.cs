@@ -25,7 +25,8 @@ public static class Casing
     /// </summary>
     /// <param name="input">The input string.</param>
     /// <returns>The input string converted to camel case.</returns>
-    public static string ToCamelCase(this string input)
+    /// <remarks>Returns <see cref="string.Empty"/> if <paramref name="input"/> is <see langword="null"/>.</remarks>
+    public static string ToCamelCase(this string? input)
     {
         return ToCamelCase(input.AsSpan());
     }
@@ -96,7 +97,8 @@ public static class Casing
     /// </summary>
     /// <param name="input">The input string.</param>
     /// <returns>The input string converted to Pascal case.</returns>
-    public static string ToPascalCase(this string input)
+    /// <remarks>Returns <see cref="string.Empty"/> if <paramref name="input"/> is <see langword="null"/>.</remarks>
+    public static string ToPascalCase(this string? input)
     {
         return ToPascalCase(input.AsSpan());
     }
@@ -156,7 +158,8 @@ public static class Casing
     /// </summary>
     /// <param name="input">The input string.</param>
     /// <returns>The input string converted to snake case.</returns>
-    public static string ToSnakeCase(this string input)
+    /// <remarks>Returns <see cref="string.Empty"/> if <paramref name="input"/> is <see langword="null"/>.</remarks>
+    public static string ToSnakeCase(this string? input)
     {
         return ToSnakeCase(input.AsSpan());
     }
@@ -183,7 +186,8 @@ public static class Casing
     /// </summary>
     /// <param name="input">The input string.</param>
     /// <returns>The input string converted to kebab case.</returns>
-    public static string ToKebabCase(this string input)
+    /// <remarks>Returns <see cref="string.Empty"/> if <paramref name="input"/> is <see langword="null"/>.</remarks>
+    public static string ToKebabCase(this string? input)
     {
         return ToKebabCase(input.AsSpan());
     }
@@ -215,7 +219,8 @@ public static class Casing
     /// If <see langword="false"/> (the default), every word is capitalized.
     /// </param>
     /// <returns>The input string converted to title case.</returns>
-    public static string ToTitleCase(this string input, bool useEnglishMinorWordRules = false)
+    /// <remarks>Returns <see cref="string.Empty"/> if <paramref name="input"/> is <see langword="null"/>.</remarks>
+    public static string ToTitleCase(this string? input, bool useEnglishMinorWordRules = false)
     {
         return ToTitleCase(input.AsSpan(), useEnglishMinorWordRules);
     }
@@ -405,7 +410,7 @@ public static class Casing
     /// stripped or transliterated. Returns <see cref="string.Empty"/> if
     /// <paramref name="input"/> is <see langword="null"/> or empty.
     /// </remarks>
-    public static string Slugify(this string input, char separator = '-')
+    public static string Slugify(this string? input, char separator = '-')
     {
         if (string.IsNullOrEmpty(input))
         {
