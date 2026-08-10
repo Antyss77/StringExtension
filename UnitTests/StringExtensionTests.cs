@@ -1,3 +1,4 @@
+using System.Buffers;
 using StringExtension;
 using StringExtension.Casing;
 using StringExtension.Linguistics;
@@ -21,6 +22,32 @@ public class StringExtensionTests
         string expected = "he wrd!";
         string result = input.RemoveCharacters(charactersToRemove);
         Assert.That(result, Is.EqualTo(expected));
+    }
+
+    /// <summary>
+    /// Tests the RemoveCharacters method with SearchValues.
+    /// </summary>
+    [Test]
+    public void TestRemoveCharacters_SearchValues()
+    {
+        var input = "hello world!";
+        var searchValues = SearchValues.Create('l', 'o');
+        var expected = "he wrd!";
+        var result = input.RemoveCharacters(searchValues);
+        Assert.That(result, Is.EqualTo(expected));
+    }
+
+    /// <summary>
+    /// Tests the ReadOnlySpan overload of RemoveCharacters with SearchValues.
+    /// </summary>
+    [Test]
+    public void TestRemoveCharacters_SearchValues_Span()
+    {
+        ReadOnlySpan<char> input = "hello world!";
+        var searchValues = SearchValues.Create('l', 'o');
+        var expected = "he wrd!";
+        var result = input.RemoveCharacters(searchValues);
+        Assert.That(result, Is.EqualTo("he wrd!"));
     }
 
     /// <summary>
@@ -57,6 +84,21 @@ public class StringExtensionTests
         string email = "john.doe@example.com";
         bool result = email.IsValidEmail();
         Assert.That(result, Is.True);
+    }
+
+    /// <summary>
+    /// Tests that IsValidEmail rejects strings that only contain an email as a substring.
+    /// </summary>
+    [Test]
+    public void TestIsValidEmail_InvalidSubstrings()
+    {
+        string emailWithPrefix = "hello john.doe@example.com";
+        string emailWithSuffix = "john.doe@example.com world";
+        string emailInSentence = "contact john.doe@example.com for info";
+
+        Assert.That(emailWithPrefix.IsValidEmail(), Is.False);
+        Assert.That(emailWithSuffix.IsValidEmail(), Is.False);
+        Assert.That(emailInSentence.IsValidEmail(), Is.False);
     }
 
     /// <summary>

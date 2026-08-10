@@ -1,4 +1,4 @@
-﻿using Benchmark;
+using System.Buffers;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Running;
@@ -7,7 +7,7 @@ using StringExtension.Casing;
 using StringExtension.Linguistics;
 using StringExtension.Validation;
 
-BenchmarkRunner.Run<StringExtensionBenchmark>(
+BenchmarkSwitcher.FromAssembly(typeof(Benchmark.StringExtensionBenchmark).Assembly).Run(args,
     ManualConfig.Create(DefaultConfig.Instance.WithOptions(ConfigOptions.DisableOptimizationsValidator)));
 
 namespace Benchmark
@@ -19,18 +19,47 @@ namespace Benchmark
     public class StringExtensionBenchmark
     {
         private readonly string input = "hello world!";
+        private readonly string longInput = string.Concat(Enumerable.Repeat("hello world! ", 100));
         private readonly char[] charactersToRemove = { 'l', 'o' };
+        private readonly SearchValues<char> searchValues = SearchValues.Create('l', 'o');
         private readonly string substring = "l";
         private readonly string phoneNumber = "555-555-5555";
         private readonly string email = "john.doe@example.com";
 
         /// <summary>
-        /// Benchmark for the RemoveCharacters method.
+        /// Benchmark for the RemoveCharacters method with char[].
         /// </summary>
         [Benchmark]
-        public string RemoveCharacters()
+        public string RemoveCharacters_CharArray()
         {
             return input.RemoveCharacters(charactersToRemove);
+        }
+
+        /// <summary>
+        /// Benchmark for the RemoveCharacters method with SearchValues.
+        /// </summary>
+        [Benchmark]
+        public string RemoveCharacters_SearchValues()
+        {
+            return input.RemoveCharacters(searchValues);
+        }
+
+        /// <summary>
+        /// Benchmark for the RemoveCharacters method on long input with char[].
+        /// </summary>
+        [Benchmark]
+        public string RemoveCharacters_Long_CharArray()
+        {
+            return longInput.RemoveCharacters(charactersToRemove);
+        }
+
+        /// <summary>
+        /// Benchmark for the RemoveCharacters method on long input with SearchValues.
+        /// </summary>
+        [Benchmark]
+        public string RemoveCharacters_Long_SearchValues()
+        {
+            return longInput.RemoveCharacters(searchValues);
         }
 
         /// <summary>

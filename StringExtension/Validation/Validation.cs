@@ -11,7 +11,7 @@ public static partial class Validation
     /// Represents a regular expression that can be used to validate an email address.
     /// </summary>
     /// <returns>A regular expression that can be used to validate an email address.</returns>
-    [GeneratedRegex(@"[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+")]
+    [GeneratedRegex(@"^[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$")]
     private static partial Regex MailAddressRegex();
 
     /// <summary>

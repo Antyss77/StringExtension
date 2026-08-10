@@ -1,4 +1,4 @@
-﻿using System.Buffers;
+using System.Buffers;
 using StringExtension.Internal;
 
 namespace StringExtension;
@@ -55,6 +55,84 @@ public static class StringExtension
             }
 
             return new string(buffer[..count]);
+        }
+        finally
+        {
+            if (pooledBuffer is not null)
+            {
+                ArrayPool<char>.Shared.Return(pooledBuffer);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Removes specified characters from the given string using a <see cref="SearchValues{T}"/> set.
+    /// </summary>
+    /// <param name="input">The input string.</param>
+    /// <param name="searchValues">The set of characters to remove.</param>
+    /// <returns>A new string with specified characters removed.</returns>
+    /// <remarks>Returns <see langword="null"/> if <paramref name="input"/> is <see langword="null"/>.</remarks>
+    public static string RemoveCharacters(this string input, SearchValues<char> searchValues)
+    {
+        if (string.IsNullOrEmpty(input) || searchValues is null)
+        {
+            return input;
+        }
+
+        return input.AsSpan().RemoveCharacters(searchValues);
+    }
+
+    /// <summary>
+    /// Removes specified characters from the given span of characters using a <see cref="SearchValues{T}"/> set.
+    /// </summary>
+    /// <param name="input">The input characters.</param>
+    /// <param name="searchValues">The set of characters to remove.</param>
+    /// <returns>A new string with specified characters removed.</returns>
+    public static string RemoveCharacters(this ReadOnlySpan<char> input, SearchValues<char> searchValues)
+    {
+        if (input.IsEmpty || searchValues is null)
+        {
+            return input.ToString();
+        }
+
+        var firstIndex = input.IndexOfAny(searchValues);
+        if (firstIndex < 0)
+        {
+            return input.ToString();
+        }
+
+        char[]? pooledBuffer = null;
+        var buffer = (uint)input.Length <= BufferLimits.StackAllocThreshold
+            ? stackalloc char[input.Length]
+            : pooledBuffer = ArrayPool<char>.Shared.Rent(input.Length);
+
+        try
+        {
+            input[..firstIndex].CopyTo(buffer);
+            var destinationIndex = firstIndex;
+            var remainder = input[firstIndex..];
+
+            while (true)
+            {
+                remainder = remainder[1..];
+
+                var nextMatch = remainder.IndexOfAny(searchValues);
+                if (nextMatch < 0)
+                {
+                    remainder.CopyTo(buffer[destinationIndex..]);
+                    destinationIndex += remainder.Length;
+                    break;
+                }
+
+                if (nextMatch > 0)
+                {
+                    remainder[..nextMatch].CopyTo(buffer[destinationIndex..]);
+                    destinationIndex += nextMatch;
+                    remainder = remainder[nextMatch..];
+                }
+            }
+
+            return new string(buffer[..destinationIndex]);
         }
         finally
         {
