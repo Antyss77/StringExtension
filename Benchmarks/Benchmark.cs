@@ -1,4 +1,5 @@
 using System.Buffers;
+using Benchmark;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Running;
@@ -7,7 +8,7 @@ using StringExtension.Casing;
 using StringExtension.Linguistics;
 using StringExtension.Validation;
 
-BenchmarkSwitcher.FromAssembly(typeof(Benchmark.StringExtensionBenchmark).Assembly).Run(args,
+BenchmarkRunner.Run<StringExtensionBenchmark>(
     ManualConfig.Create(DefaultConfig.Instance.WithOptions(ConfigOptions.DisableOptimizationsValidator)));
 
 namespace Benchmark

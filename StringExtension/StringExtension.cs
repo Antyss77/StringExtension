@@ -72,7 +72,7 @@ public static class StringExtension
     /// <param name="searchValues">The set of characters to remove.</param>
     /// <returns>A new string with specified characters removed.</returns>
     /// <remarks>Returns <see langword="null"/> if <paramref name="input"/> is <see langword="null"/>.</remarks>
-    public static string RemoveCharacters(this string input, SearchValues<char> searchValues)
+    public static string? RemoveCharacters(this string? input, SearchValues<char>? searchValues)
     {
         if (string.IsNullOrEmpty(input) || searchValues is null)
         {
@@ -88,7 +88,7 @@ public static class StringExtension
     /// <param name="input">The input characters.</param>
     /// <param name="searchValues">The set of characters to remove.</param>
     /// <returns>A new string with specified characters removed.</returns>
-    public static string RemoveCharacters(this ReadOnlySpan<char> input, SearchValues<char> searchValues)
+    public static string RemoveCharacters(this ReadOnlySpan<char> input, SearchValues<char>? searchValues)
     {
         if (input.IsEmpty || searchValues is null)
         {
