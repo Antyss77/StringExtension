@@ -47,7 +47,7 @@ public class StringExtensionTests
         var searchValues = SearchValues.Create('l', 'o');
         var expected = "he wrd!";
         var result = input.RemoveCharacters(searchValues);
-        Assert.That(result, Is.EqualTo("he wrd!"));
+Assert.That(result, Is.EqualTo(expected));
     }
 
     /// <summary>
