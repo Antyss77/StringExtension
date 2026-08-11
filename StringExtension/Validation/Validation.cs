@@ -26,7 +26,8 @@ public static partial class Validation
     /// </summary>
     /// <param name="email">The email address to validate.</param>
     /// <returns><c>true</c> if the given email address is valid; otherwise, <c>false</c>.</returns>
-    public static bool IsValidEmail(this string email)
+    /// <remarks>Returns <see langword="false"/> if <paramref name="email"/> is <see langword="null"/>.</remarks>
+    public static bool IsValidEmail(this string? email)
     {
         return !string.IsNullOrEmpty(email) && MailAddressRegex().IsMatch(email);
     }
@@ -46,7 +47,8 @@ public static partial class Validation
     /// </summary>
     /// <param name="phoneNumber">The phone number to validate.</param>
     /// <returns><c>true</c> if the given phone number is valid; otherwise, <c>false</c>.</returns>
-    public static bool IsValidPhoneNumber(this string phoneNumber)
+    /// <remarks>Returns <see langword="false"/> if <paramref name="phoneNumber"/> is <see langword="null"/>.</remarks>
+    public static bool IsValidPhoneNumber(this string? phoneNumber)
     {
         return !string.IsNullOrEmpty(phoneNumber) && PhoneNumberRegex().IsMatch(phoneNumber);
     }

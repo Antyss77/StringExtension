@@ -1,4 +1,4 @@
-using System.Buffers;
+﻿using System.Buffers;
 using Benchmark;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Configs;
@@ -31,7 +31,7 @@ namespace Benchmark
         /// Benchmark for the RemoveCharacters method with char[].
         /// </summary>
         [Benchmark]
-        public string RemoveCharacters_CharArray()
+        public string? RemoveCharacters_CharArray()
         {
             return input.RemoveCharacters(charactersToRemove);
         }
@@ -40,7 +40,7 @@ namespace Benchmark
         /// Benchmark for the RemoveCharacters method with SearchValues.
         /// </summary>
         [Benchmark]
-        public string RemoveCharacters_SearchValues()
+        public string? RemoveCharacters_SearchValues()
         {
             return input.RemoveCharacters(searchValues);
         }
@@ -49,7 +49,7 @@ namespace Benchmark
         /// Benchmark for the RemoveCharacters method on long input with char[].
         /// </summary>
         [Benchmark]
-        public string RemoveCharacters_Long_CharArray()
+        public string? RemoveCharacters_Long_CharArray()
         {
             return longInput.RemoveCharacters(charactersToRemove);
         }
@@ -58,7 +58,7 @@ namespace Benchmark
         /// Benchmark for the RemoveCharacters method on long input with SearchValues.
         /// </summary>
         [Benchmark]
-        public string RemoveCharacters_Long_SearchValues()
+        public string? RemoveCharacters_Long_SearchValues()
         {
             return longInput.RemoveCharacters(searchValues);
         }
@@ -94,7 +94,7 @@ namespace Benchmark
         /// Benchmark for the ReverseWords method.
         /// </summary>
         [Benchmark]
-        public string ReverseWords()
+        public string? ReverseWords()
         {
             return input.ReverseWords();
         }
@@ -121,7 +121,7 @@ namespace Benchmark
         /// Benchmark for the RemoveDuplicateCharacters method.
         /// </summary>
         [Benchmark]
-        public string RemoveDuplicateCharacters()
+        public string? RemoveDuplicateCharacters()
         {
             return input.RemoveDuplicateCharacters();
         }
