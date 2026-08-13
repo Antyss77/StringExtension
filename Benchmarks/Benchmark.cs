@@ -8,8 +8,16 @@ using StringExtension.Casing;
 using StringExtension.Linguistics;
 using StringExtension.Validation;
 
-BenchmarkRunner.Run<StringExtensionBenchmark>(
-    ManualConfig.Create(DefaultConfig.Instance.WithOptions(ConfigOptions.DisableOptimizationsValidator)));
+var config = ManualConfig.Create(DefaultConfig.Instance.WithOptions(ConfigOptions.DisableOptimizationsValidator));
+
+if (args.Length == 0)
+{
+    BenchmarkSwitcher.FromAssembly(typeof(StringExtensionBenchmark).Assembly).Run(new[] { "--filter", "*" }, config);
+}
+else
+{
+    BenchmarkSwitcher.FromAssembly(typeof(StringExtensionBenchmark).Assembly).Run(args, config);
+}
 
 namespace Benchmark
 {
